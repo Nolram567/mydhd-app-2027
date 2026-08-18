@@ -1,8 +1,6 @@
 # My DHd App
 
-A personal conference companion for [DHd 2026](https://dhd2026.digitalhumanities.de/) – the annual conference of the Association for Digital Humanities in the German-speaking world, held in Vienna (23–27 February 2026).
-
-Live at: **https://mydhd.grid-creators.com**
+A personal conference companion for [DHd 2026](https://dhd2026.digitalhumanities.de/) – the annual conference of the Association for Digital Humanities in the German-speaking world, held in Marburg (01–05 March 2027).
 
 ## Features
 
@@ -63,8 +61,7 @@ The app will be available at `http://localhost:5000`.
 
 ## Credits
 
-Developed by **Tinghui Duan** / [Grid Creators](https://www.grid-creators.com).
-Conference data sourced from [dhd2026.digitalhumanities.de](https://dhd2026.digitalhumanities.de/).
+Source-Codebase developed by **Tinghui Duan** / [Grid Creators](https://www.grid-creators.com), further developed and revised for the DHd 2027 by the team at the **Marburg Center of Digital Culture and Infrastructure (MCDCI)**.
 
 ## Licence
 
