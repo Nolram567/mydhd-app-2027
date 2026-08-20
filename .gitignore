@@ -1,6 +1,9 @@
 # Database (contains user data)
 conference.db
 
+# Environment (secret key)
+.env
+
 # Scripts with sensitive data
 checkuser.py
 

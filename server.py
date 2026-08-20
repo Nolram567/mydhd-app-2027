@@ -179,5 +179,7 @@ def save_program():
     return jsonify({'message': 'Programm gespeichert.'}), 200
 
 if __name__ == '__main__':
-    print("Starting Flask server on http://localhost:8080")
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    port = int(os.environ.get('PORT', 8080))
+    debug = os.environ.get('FLASK_DEBUG', '1') == '1'
+    print(f"Starting Flask server on http://localhost:{port}")
+    app.run(host='0.0.0.0', port=port, debug=debug)
