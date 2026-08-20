@@ -66,6 +66,3 @@ The app will be available at `http://localhost:5000`.
 Developed by **Tinghui Duan** / [Grid Creators](https://www.grid-creators.com).
 Conference data sourced from [dhd2026.digitalhumanities.de](https://dhd2026.digitalhumanities.de/).
 
-## Licence
-
-[MIT](LICENSE)
