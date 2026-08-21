@@ -79,10 +79,12 @@ body {
 }
 
 .nav-btn {
+    display: inline-block;
     background: none;
     border: none;
     color: rgba(255, 255, 255, 0.7);
     font-size: 1rem;
+    text-decoration: none;
     cursor: pointer;
     padding: 5px 10px;
     border-radius: 4px;
@@ -527,6 +529,26 @@ body {
 }
 
 .map-icon { font-size: 48px; color: #ccc; }
+
+/* Lageplan Page */
+.lageplan-page {
+    text-align: center;
+}
+
+.lageplan-page h2 {
+    margin-bottom: 1rem;
+}
+
+.lageplan-placeholder {
+    height: 280px;
+}
+
+.lageplan-info {
+    text-align: left;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
 
 .btn-primary {
     display: inline-block;
