@@ -12,6 +12,7 @@ A personal conference companion for [DHd 2026](https://dhd2026.digitalhumanities
 - Share links to individual sessions or presentations
 - Optional user account for cross-device bookmark sync
 - Works offline-first: bookmarks are always saved locally in the browser
+- ** Further features are in development **
 
 ## Tech stack
 
@@ -31,8 +32,7 @@ A personal conference companion for [DHd 2026](https://dhd2026.digitalhumanities
 │   ├── index.html              # Single-page app shell
 │   ├── app.js                  # Frontend logic
 │   ├── style.css               # Styles
-│   ├── dhd2026_programm.json   # Conference programme data
-│   └── logo.png                # App logo
+│   └── dhd2026_programm.json   # Conference programme data (will be substituted by the dhd 2027 programe)
 ├── extract_abstracts.py        # Data extraction helper
 ├── extract_authors.py          # Data extraction helper
 └── conference.db               # SQLite database (git-ignored)
