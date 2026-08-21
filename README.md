@@ -61,5 +61,5 @@ The app will be available at `http://localhost:5000`.
 
 ## Credits
 
-Source-Codebase developed by **Tinghui Duan** / [Grid Creators](https://www.grid-creators.com), further developed and revised for the DHd 2027 by the team at the **Marburg Center of Digital Culture and Infrastructure (MCDCI)**.
+Source-Codebase developed by **Tinghui Duan** / [Grid Creators](https://www.grid-creators.com), further developed and revised for the DHd 2027 by the team at the **Marburg Center for Digital Culture and Infrastructure (MCDCI)**.
 
