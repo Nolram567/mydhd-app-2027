@@ -711,6 +711,10 @@ body {
     transition: background-color 0.15s;
 }
 
+a.menu-item {
+    text-decoration: none;
+}
+
 .menu-item:hover {
     background-color: #f0f0f0;
 }

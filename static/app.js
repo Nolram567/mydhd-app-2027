@@ -1270,6 +1270,7 @@ const INFO_PAGES = {
                 <li>Mit einem Konto Ihre Auswahl dauerhaft und geräteübergreifend speichern</li>
             </ul>
             <p style="margin-top:1em;">Die in dieser App enthaltenen Informationen wurden von der offiziellen Konferenzwebsite <a href="https://dhd2026.digitalhumanities.de/" target="_blank">dhd2026.digitalhumanities.de</a> entnommen.</p>
+            <p>Der Quellcode dieser App ist offen verfügbar: <a href="https://github.com/grid-creators/mydhd-app" target="_blank" rel="noopener">github.com/grid-creators/mydhd-app</a></p>
         `
     },
     help: {
