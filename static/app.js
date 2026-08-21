@@ -68,7 +68,8 @@ async function fetchData() {
 
     } catch (error) {
         console.error('Error loading schedule:', error);
-        document.getElementById('app-content').innerHTML = '<p class="empty-state">Fehler beim Laden der Daten.</p>';
+        const container = document.getElementById('app-content');
+        if (container) container.innerHTML = '<p class="empty-state">Fehler beim Laden der Daten.</p>';
     }
 }
 
@@ -335,6 +336,7 @@ function createShareButton(title, time, location, sid) {
 
 function buildDayFilterBar() {
     const bar = document.getElementById('day-filter-bar');
+    if (!bar) return;
     bar.innerHTML = '';
     if (!conferenceData) return;
 
@@ -359,6 +361,7 @@ function buildDayFilterBar() {
 function buildTimeFilterBar() {
     const bar = document.getElementById('time-filter-bar');
     const content = document.getElementById('app-content');
+    if (!bar || !content) return;
     bar.innerHTML = '';
 
     if (currentDay === null || !conferenceData) {
@@ -791,6 +794,7 @@ function renderPresentationCard(item) {
 
 function render() {
     const container = document.getElementById('app-content');
+    if (!container) return;
     container.innerHTML = '';
 
     if (!conferenceData) return;
@@ -1174,12 +1178,20 @@ function navigateToHash() {
 }
 
 function navigateToSession(bookmarkId, presIndex, instant) {
+    // On pages without the program view (e.g. Lageplan), jump to the overview instead
+    if (!document.getElementById('app-content')) {
+        const anchor = presIndex != null ? `pres-${bookmarkId}-${presIndex}` : `session-${bookmarkId}`;
+        window.location.href = `index.html#${encodeURIComponent(anchor)}`;
+        return;
+    }
+
     closePersonModal();
     // Switch to Übersicht tab
     currentTab = 'all';
     document.querySelectorAll('.main-nav .nav-btn').forEach(btn => btn.classList.remove('active'));
     document.getElementById('btn-all').classList.add('active');
-    document.getElementById('login-hint').classList.add('hidden');
+    const loginHint = document.getElementById('login-hint');
+    if (loginHint) loginHint.classList.add('hidden');
     // Reset filters so the session is visible
     currentDay = null;
     currentTimeSlot = null;
