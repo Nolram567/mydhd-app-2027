@@ -1287,10 +1287,9 @@ const INFO_PAGES = {
     imprint: {
         title: 'Impressum',
         html: `
-            <p><strong>Grid Creators</strong></p>
-            <p>Entwicklung: Tinghui Duan ❤️</p>
-            <p>E-Mail: <a href="mailto:admin@grid-creators.com">admin@grid-creators.com</a></p>
-            <p>Web: <a href="https://www.grid-creators.com" target="_blank">www.grid-creators.com</a></p>
+            <p>Diese App ist ein Fork der <a href="https://github.com/grid-creators/mydhd-app" target="_blank" rel="noopener">My DHd App</a> von <abbr title="admin@grid-creators.com · www.grid-creators.com">Grid Creators / Tinghui Duan</abbr>.
+            Sie wurde für die DHd Konferenz 2027 in Marburg vom Team des <strong><a href="https://www.uni-marburg.de/de/mcdci" target="_blank" rel="noopener">Marburg Center for Digital Culture and Infrastructure</a></strong> weiterentwickelt.</p>
+            <p>Diese App steht unter der <a href="https://github.com/grid-creators/mydhd-app/blob/main/LICENSE" target="_blank" rel="noopener">MIT-Lizenz</a> und kann frei genutzt und weiterentwickelt werden.</p>
         `
     }
 };
