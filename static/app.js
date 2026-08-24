@@ -1281,9 +1281,8 @@ const INFO_PAGES = {
                 <li>Unter „Mein Programm" alle vorgemerkten Beiträge auf einen Blick sehen</li>
                 <li>Mit einem Konto Ihre Auswahl dauerhaft und geräteübergreifend speichern</li>
             </ul>
-            <p style="margin-top:1em;">Die in dieser App enthaltenen Informationen wurden von der offiziellen Konferenzwebsite <a href="https://dhd2026.digitalhumanities.de/" target="_blank">dhd2026.digitalhumanities.de</a> entnommen.</p>
-            <p>Der Quellcode dieser App ist offen verfügbar: <a href="https://github.com/grid-creators/mydhd-app" target="_blank" rel="noopener">github.com/grid-creators/mydhd-app</a></p>
-        `
+            <p style="margin-top:1em;">Die in dieser App enthaltenen Informationen wurden von der offiziellen Konferenzwebsite <strong>Hier Link der 2027er Webseite einfügen, sobald verfügbar</strong> entnommen.</p>
+            `
     },
     help: {
         title: 'Hilfe',
