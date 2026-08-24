@@ -1,5 +1,6 @@
 :root {
     --primary-color: #0056b3;
+    --navbar-color: #88153c;
     --accent-color: #ffab00;
     --bg-color: #f4f4f9;
     --card-bg: #ffffff;
@@ -31,7 +32,7 @@ body {
     left: 0;
     width: 100%;
     height: var(--nav-height);
-    background-color: var(--primary-color);
+    background-color: var(--navbar-color);
     color: white;
     display: flex;
     justify-content: space-between;
