@@ -1,9 +1,24 @@
 history.scrollRestoration = 'manual';
 
 document.addEventListener('DOMContentLoaded', () => {
+    applyInitialTabFromHash();
     fetchData();
     updateAuthUI();
 });
+
+// Apply a #my/#all hash immediately on load, before the (async) program fetch
+// resolves, so the header never briefly shows "Übersicht" as active by mistake.
+function applyInitialTabFromHash() {
+    let hash;
+    try {
+        hash = decodeURIComponent(window.location.hash.slice(1));
+    } catch (e) {
+        hash = window.location.hash.slice(1);
+    }
+    if (hash === 'my' || hash === 'all') {
+        switchTab(hash);
+    }
+}
 
 let conferenceData = null;
 let savedSessionIds = new Set(JSON.parse(localStorage.getItem('dhd2026_saved_sessions')) || []);
