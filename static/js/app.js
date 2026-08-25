@@ -47,7 +47,7 @@ function escapeHtml(str) {
 
 async function fetchData() {
     try {
-        const response = await fetch('dhd2026_programm.json');
+        const response = await fetch('data/dhd2026_programm.json');
         const data = await response.json();
         conferenceData = data;
         buildDayFilterBar();

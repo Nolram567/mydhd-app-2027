@@ -13,7 +13,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).parent / "static"
 HTML_PATH = BASE_DIR / "programm.html"
-JSON_PATH = BASE_DIR / "dhd2026_programm.json"
+JSON_PATH = BASE_DIR / "data" / "dhd2026_programm.json"
 
 
 def normalize_title(title: str) -> str:

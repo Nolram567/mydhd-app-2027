@@ -75,7 +75,7 @@ def root():
 
 @app.route('/Lageplan.pdf')
 def lageplan():
-    return send_from_directory(os.path.dirname(os.path.abspath(__file__)), 'Lageplan.pdf')
+    return send_from_directory(os.path.join(STATIC_DIR, 'assets'), 'Lageplan.pdf')
 
 @app.route('/<path:path>')
 def send_static(path):
