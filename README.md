@@ -27,15 +27,22 @@ A personal conference companion for [DHd 2026](https://dhd2026.digitalhumanities
 
 ```
 .
-├── server.py                   # Flask backend (auth, bookmark sync API)
+├── server.py                        # Flask backend (auth, bookmark sync API)
 ├── static/
-│   ├── index.html              # Single-page app shell
-│   ├── app.js                  # Frontend logic
-│   ├── style.css               # Styles
-│   └── dhd2026_programm.json   # Conference programme data (will be substituted by the dhd 2027 programe)
-├── extract_abstracts.py        # Data extraction helper
-├── extract_authors.py          # Data extraction helper
-└── conference.db               # SQLite database (git-ignored)
+│   ├── index.html                   # Single-page app shell
+│   ├── lageplan.html                # Lage & Umgebung page (map)
+│   ├── programm.html                # ConfTool HTML export (source for data extraction)
+│   ├── css/
+│   │   └── style.css                # Styles
+│   ├── js/
+│   │   └── app.js                   # Frontend logic
+│   ├── data/
+│   │   ├── dhd2026_programm.json    # Conference programme data (will be substituted by the dhd 2027 programe)
+│   │   └── lageplan_markers.json    # Map markers for Lage & Umgebung
+│   └── assets/                      # Images, PDFs, and other static assets
+├── extract_abstracts.py             # Data extraction helper
+├── extract_authors.py               # Data extraction helper
+└── conference.db                    # SQLite database (git-ignored)
 ```
 
 ## Running locally
