@@ -1,0 +1,16 @@
+<header class="app-header">
+    <h1>MyDHd 2027</h1>
+    <nav class="main-nav">
+        {% if page == 'index' %}
+        <button id="btn-all" class="nav-btn {{ 'active' if active_tab == 'all' }}" onclick="switchTab('all')">Übersicht</button>
+        <button id="btn-my" class="nav-btn {{ 'active' if active_tab == 'my' }}" onclick="switchTab('my')">Mein Programm</button>
+        {% else %}
+        <a id="btn-all" class="nav-btn" href="index.html#all">Übersicht</a>
+        <a id="btn-my" class="nav-btn" href="index.html#my">Mein Programm</a>
+        {% endif %}
+        <a id="btn-map" class="nav-btn {{ 'active' if active_tab == 'map' }}" href="lageplan.html">Lage & Umgebung</a>
+    </nav>
+    <button class="hamburger-btn" onclick="toggleMenu()">
+        <span class="material-icons">menu</span>
+    </button>
+</header>

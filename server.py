@@ -3,7 +3,7 @@ import json
 import os
 import secrets
 from datetime import datetime, timezone
-from flask import Flask, request, jsonify, send_from_directory, session
+from flask import Flask, request, jsonify, send_from_directory, session, render_template
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__, static_folder='static', static_url_path='')
@@ -70,8 +70,13 @@ def require_login(f):
     return decorated
 
 @app.route('/')
+@app.route('/index.html')
 def root():
-    return send_from_directory(STATIC_DIR, 'index.html')
+    return render_template('index.html')
+
+@app.route('/lageplan.html')
+def lageplan_page():
+    return render_template('lageplan.html')
 
 @app.route('/Lageplan.pdf')
 def lageplan():

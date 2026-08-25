@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% set page = 'index' %}
+{% set active_tab = 'all' %}
+
+{% block head_meta %}
+    <meta property="og:title" content="My DHd App">
+    <meta property="og:description" content="Dein persönlicher DHd Konferenzbegleiter">
+    <meta property="og:image" content="https://mydhd.grid-creators.com/logo.png">
+    <meta property="og:url" content="https://mydhd.grid-creators.com">
+    <meta property="og:type" content="website">
+{% endblock %}
+
+{% block title %}My DHd App{% endblock %}
+
+{% block content %}
+    <div id="day-filter-bar" class="day-filter-bar"></div>
+    <div id="time-filter-bar" class="time-filter-bar hidden"></div>
+
+    <main id="app-content" class="content">
+        <div class="loading-state">
+            <span class="material-icons spinning">sync</span>
+            <p>Programm wird geladen...</p>
+        </div>
+    </main>
+
+    <div id="login-hint" class="toast hidden">
+        <div class="toast-content">
+            <span class="material-icons info-icon">info</span>
+            <p>Bitte loggen Sie sich ein, um Ihr Programm geräteübergreifend zu sehen.</p>
+            <button onclick="closeToast()" class="close-btn">&times;</button>
+        </div>
+    </div>
+
+    <!-- Map Modal -->
+    <div id="map-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeMap()">&times;</span>
+            <h2>Raumplan</h2>
+            <p id="map-location-name"></p>
+            <div class="map-placeholder">
+                <span class="material-icons map-icon">map</span>
+                <p>Karte für <b id="target-location"></b> wird geladen...</p>
+                <a id="ext-map-link" href="#" target="_blank" class="btn-primary">Auf Google Maps öffnen</a>
+                <a href="assets/Lageplan.pdf" target="_blank" class="btn-primary btn-secondary">Lageplan (PDF)</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,95 @@
+<!-- Auth Modal -->
+<div id="auth-modal" class="modal hidden">
+    <div class="modal-content auth-content">
+        <span class="close-modal" onclick="closeAuthModal()">&times;</span>
+        <div class="auth-tabs">
+            <button id="tab-login" class="auth-tab active" onclick="switchAuthMode('login')">Login</button>
+            <button id="tab-register" class="auth-tab" onclick="switchAuthMode('register')">Registrieren</button>
+        </div>
+
+        <form id="auth-form" onsubmit="handleAuth(event)">
+            <div class="form-group">
+                <label for="username">Benutzername</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Passwort</label>
+                <input type="password" id="password" required>
+            </div>
+            <p id="auth-error" class="error-msg"></p>
+            <button type="submit" id="auth-submit-btn" class="btn-primary full-width">Einloggen</button>
+        </form>
+    </div>
+</div>
+
+<!-- Menu Overlay -->
+<div id="menu-overlay" class="menu-overlay hidden" onclick="toggleMenu()">
+    <div class="menu-panel" onclick="event.stopPropagation()">
+        <div class="menu-header">
+            <span>Menü</span>
+            <button class="menu-close-btn" onclick="toggleMenu()">&times;</button>
+        </div>
+        <ul class="menu-list">
+            <li class="menu-item mobile-nav-item" onclick="toggleMenu(); {% if page == 'index' %}switchTab('all');{% else %}window.location.href = 'index.html#all';{% endif %}">
+                <span class="material-icons">list_alt</span> Übersicht
+            </li>
+            <li class="menu-item mobile-nav-item" onclick="toggleMenu(); {% if page == 'index' %}switchTab('my');{% else %}window.location.href = 'index.html#my';{% endif %}">
+                <span class="material-icons">bookmark</span> Mein Programm
+            </li>
+            <li class="mobile-nav-item">
+                <a class="menu-item" href="lageplan.html" onclick="toggleMenu()">
+                    <span class="material-icons">map</span> Lage & Umgebung
+                </a>
+            </li>
+            <li class="menu-divider mobile-nav-item"></li>
+            <li id="menu-login" class="menu-item" onclick="toggleMenu(); openLoginModal();">
+                <span class="material-icons">login</span> Login / Registrieren
+            </li>
+            <li id="menu-user" class="menu-item menu-user-info hidden">
+                <span class="material-icons">account_circle</span> <span id="menu-username"></span>
+            </li>
+            <li id="menu-logout" class="menu-item hidden" onclick="toggleMenu(); logout();">
+                <span class="material-icons">logout</span> Logout
+            </li>
+            <li class="menu-divider"></li>
+            <li class="menu-item" onclick="showPersonIndex()">
+                <span class="material-icons">people</span> Personenverzeichnis
+            </li>
+            <li class="menu-divider"></li>
+            <li class="menu-item" onclick="showInfoPage('about')">
+                <span class="material-icons">info</span> Über die App
+            </li>
+            <li class="menu-item" onclick="showInfoPage('help')">
+                <span class="material-icons">help</span> Hilfe
+            </li>
+            <li class="menu-item" onclick="showInfoPage('imprint')">
+                <span class="material-icons">gavel</span> Impressum
+            </li>
+            <li>
+                <a class="menu-item" href="https://github.com/grid-creators/mydhd-app" target="_blank" rel="noopener" onclick="toggleMenu()">
+                    <span class="material-icons">code</span> Quellcode auf GitHub
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Info Modal -->
+<div id="info-modal" class="modal hidden">
+    <div class="modal-content info-modal-content">
+        <span class="close-modal" onclick="closeInfoModal()">&times;</span>
+        <h2 id="info-modal-title"></h2>
+        <div id="info-modal-body"></div>
+    </div>
+</div>
+
+<!-- Person Index Modal -->
+<div id="person-modal" class="modal hidden">
+    <div class="modal-content person-modal-content">
+        <span class="close-modal" onclick="closePersonModal()">&times;</span>
+        <h2>Personenverzeichnis</h2>
+        <input type="text" id="person-search" class="person-search-input" placeholder="Name suchen..." oninput="filterPersons()">
+        <div id="person-count" class="person-count"></div>
+        <div id="person-list" class="person-list"></div>
+    </div>
+</div>
