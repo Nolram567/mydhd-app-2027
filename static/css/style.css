@@ -98,10 +98,6 @@ body {
     font-weight: bold;
 }
 
-.mobile-nav-item {
-    display: none;
-}
-
 @media (max-width: 600px) {
     .app-header h1 {
         font-size: 1rem;
@@ -110,10 +106,6 @@ body {
 
     .main-nav {
         display: none;
-    }
-
-    .mobile-nav-item {
-        display: flex;
     }
 }
 

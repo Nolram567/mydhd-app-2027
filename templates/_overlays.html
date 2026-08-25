@@ -30,18 +30,18 @@
             <button class="menu-close-btn" onclick="toggleMenu()">&times;</button>
         </div>
         <ul class="menu-list">
-            <li class="menu-item mobile-nav-item" onclick="toggleMenu(); {% if page == 'index' %}switchTab('all');{% else %}window.location.href = 'index.html#all';{% endif %}">
+            <li class="menu-item" onclick="toggleMenu(); {% if page == 'index' %}switchTab('all');{% else %}window.location.href = 'index.html#all';{% endif %}">
                 <span class="material-icons">list_alt</span> Übersicht
             </li>
-            <li class="menu-item mobile-nav-item" onclick="toggleMenu(); {% if page == 'index' %}switchTab('my');{% else %}window.location.href = 'index.html#my';{% endif %}">
+            <li class="menu-item" onclick="toggleMenu(); {% if page == 'index' %}switchTab('my');{% else %}window.location.href = 'index.html#my';{% endif %}">
                 <span class="material-icons">bookmark</span> Mein Programm
             </li>
-            <li class="mobile-nav-item">
+            <li>
                 <a class="menu-item" href="lageplan.html" onclick="toggleMenu()">
                     <span class="material-icons">map</span> Lage & Umgebung
                 </a>
             </li>
-            <li class="menu-divider mobile-nav-item"></li>
+            <li class="menu-divider"></li>
             <li id="menu-login" class="menu-item" onclick="toggleMenu(); openLoginModal();">
                 <span class="material-icons">login</span> Login / Registrieren
             </li>
