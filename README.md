@@ -1,6 +1,6 @@
-# My DHd App
+# MyDHd App 2027
 
-A personal conference companion for [DHd 2026](https://dhd2026.digitalhumanities.de/) – the annual conference of the Association for Digital Humanities in the German-speaking world, held in Marburg (01–05 March 2027).
+A personal conference companion for [DHd 2027](https://dhd2026.digitalhumanities.de/) – the annual conference of the Association for Digital Humanities in the German-speaking world, held in Marburg (01–05 March 2027).
 
 ## Features
 
@@ -12,7 +12,7 @@ A personal conference companion for [DHd 2026](https://dhd2026.digitalhumanities
 - Share links to individual sessions or presentations
 - Optional user account for cross-device bookmark sync
 - Works offline-first: bookmarks are always saved locally in the browser
-- ** Further features are in development **
+- **Further features are in development**
 
 ## Tech stack
 
