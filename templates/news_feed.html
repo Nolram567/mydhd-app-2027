@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% set page = 'news-feed' %}
+{% set active_tab = 'news-feed' %}
+
+{% block title %}News Feed {% endblock %}
+
+{% block content %}
+    <main class="content">
+        <div class="news-feed-page">
+            <h2>News Feed</h2>
+            <p class="news-feed-description">
+                Hier erscheinen öffentliche Beiträge von <strong>https://fedihum.org/@DHdKonferenz</strong>
+                sowie Beiträge mit dem Hashtag <strong>#Dhd2027</strong>.
+            </p>
+            <div class="news-feed-toolbar">
+                <p id="news-feed-status" class="news-feed-status" role="status" aria-live="polite">Feed wird geladen …</p>
+                <button id="news-feed-refresh" class="news-feed-refresh" type="button">Aktualisieren</button>
+            </div>
+            <div id="mastodon-feed" class="mastodon-feed" aria-live="polite"></div>
+            <button id="news-feed-load-more" class="news-feed-load-more" type="button" hidden>
+                Ältere #Dhd2027-Beiträge laden
+            </button>
+        </div>
+    </main>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="js/news_feed.js"></script>
+{% endblock %}
