@@ -136,11 +136,30 @@
             .then(response => response.json())
             .then(markers => {
                 markers.forEach(marker => {
+                    // category darf ein String oder ein Array sein
+                    const categories = [].concat(marker.category || 'Sonstiges');
                     const popupText = marker.description
                         ? `<strong>${escapeHtml(marker.name)}</strong><br>${escapeHtml(marker.description)}`
                         : `<strong>${escapeHtml(marker.name)}</strong>`;
-                    L.marker([marker.lat, marker.lng]).addTo(marburgMap).bindPopup(popupText);
+
+                    // Das Icon richtet sich nach der ersten Kategorie
+                    const m = L.marker([marker.lat, marker.lng], { icon: categoryIcon(categories[0]) })
+                        .bindPopup(popupText);
+                    m.meta = { name: marker.name, description: marker.description, categories: categories };
+                    allMarkers.push(m);
+                    categories.forEach(c => filterState.categories.add(c));
                 });
+
+                // Checkboxen in der Reihenfolge von categoryConfig, Unbekanntes ans Ende
+                const order = Object.keys(categoryConfig);
+                const sorted = [...filterState.categories].sort((a, b) => {
+                    const ia = order.indexOf(a) === -1 ? 999 : order.indexOf(a);
+                    const ib = order.indexOf(b) === -1 ? 999 : order.indexOf(b);
+                    return ia - ib;
+                });
+
+                addFilterControl(sorted);
+                applyFilter();
             })
             .catch(error => console.error('Fehler beim Laden der Marker:', error));
     </script>
