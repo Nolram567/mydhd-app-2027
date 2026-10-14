@@ -5,4 +5,39 @@
         "lng": 8.767088,
         "description": "Platzhaltertext: Weitere Informationen folgen in Kürze."
     }
+    ,
+    {
+        "name": "Kunstmuseum Marburg",
+        "lat": 50.809935,
+        "lng": 8.774666,
+        "description": "Platzhaltertext: Weitere Informationen folgen in Kürze."
+    }
+    ,
+    {
+        "name": "Universität Marburg",
+        "lat": 50.808982,
+        "lng": 8.772345,
+        "description": "Platzhaltertext: Weitere Informationen folgen in Kürze."
+    }
+    ,
+    {
+        "name": "Botanischer Garten Marburg",
+        "lat": 50.808123,
+        "lng": 8.769876,
+        "description": "Platzhaltertext: Weitere Informationen folgen in Kürze."
+    }
+    ,
+    {
+        "name": "Erwin-Piscator-Haus",
+        "lat": 50.810456,
+        "lng": 8.771234,
+        "description": "Party Location"
+    }
+    ,
+    {
+        "name": "Universitätsbibliothek Marburg",
+        "lat": 50.813467,
+        "lng": 8.771634,
+        "description": "Platzhaltertext: Weitere Informationen folgen in Kürze."
+    }
 ]
