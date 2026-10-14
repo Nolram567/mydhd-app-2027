@@ -50,6 +50,87 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-Mitwirkende'
         }).addTo(marburgMap);
 
+        // Kategorien für Filtersystem
+        const categoryConfig = {
+            'Tagungsgebäude': { color: 'blue', icon: '🏢' },
+            'Party Location': { color: 'red', icon: '🎉' },
+            'Unterkunft': { color: 'green', icon: '🏨' },
+            'Restaurants': { color: 'orange', icon: '🍽️' }
+        };
+
+        // Filterfunktion 
+        function categoryIcon(category) {
+            const cfg = categoryConfig[category] || categoryConfig['Sonstiges'];
+            return L.divIcon({
+                className: '',
+                html: '<div style="background:' + cfg.color + ';width:30px;height:30px;border-radius:50% 50% 50% 0;' +
+                      'transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;' +
+                      'border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);">' +
+                      '<span style="transform:rotate(45deg);font-size:15px;">' + cfg.symbol + '</span></div>',
+                iconSize: [30, 30],
+                iconAnchor: [15, 30],
+                popupAnchor: [0, -28]
+            });
+        }
+
+        const markerLayer = L.layerGroup().addTo(marburgMap);
+        const allMarkers = [];
+        const filterState = { categories: new Set(), search: '' };
+
+        function applyFilter() {
+            markerLayer.clearLayers();
+            let count = 0;
+            allMarkers.forEach(m => {
+                const { name, description, categories } = m.meta;
+                const text = (name + ' ' + (description || '')).toLowerCase();
+                const categoryMatch = categories.some(c => filterState.categories.has(c));
+                if (categoryMatch && text.includes(filterState.search.toLowerCase())) {
+                    markerLayer.addLayer(m);
+                    count++;
+                }
+            });
+            const counter = document.getElementById('filter-count');
+            if (counter) counter.textContent = count + ' von ' + allMarkers.length + ' Orten';
+        }
+
+        function addFilterControl(categories) {
+            const FilterControl = L.Control.extend({
+                options: { position: 'topright' },
+                onAdd: function () {
+                    const div = L.DomUtil.create('div', 'leaflet-bar filter-panel');
+                    div.style.cssText = 'background:#fff;padding:8px 10px;min-width:180px;';
+                    div.innerHTML =
+                        '<input type="search" id="filter-search" placeholder="Suchen …" style="width:100%;box-sizing:border-box;margin-bottom:6px;">' +
+                        categories.map(c => {
+                            const cfg = categoryConfig[c] || categoryConfig['Sonstiges'];
+                            return '<label style="display:block;cursor:pointer;">' +
+                                '<input type="checkbox" value="' + escapeHtml(c) + '" checked> ' +
+                                cfg.symbol + ' ' + escapeHtml(c) +
+                                '</label>';
+                        }).join('') +
+                        '<small id="filter-count"></small>';
+
+                    L.DomEvent.disableClickPropagation(div);
+                    L.DomEvent.disableScrollPropagation(div);
+
+                    div.querySelectorAll('input[type=checkbox]').forEach(cb => {
+                        cb.addEventListener('change', e => {
+                            e.target.checked
+                                ? filterState.categories.add(e.target.value)
+                                : filterState.categories.delete(e.target.value);
+                            applyFilter();
+                        });
+                    });
+                    div.querySelector('#filter-search').addEventListener('input', e => {
+                        filterState.search = e.target.value;
+                        applyFilter();
+                    });
+                    return div;
+                }
+            });
+            marburgMap.addControl(new FilterControl());
+        }
+
         // Marker werden separat in lageplan_markers.json gepflegt
         fetch('data/lageplan_markers.json')
             .then(response => response.json())
