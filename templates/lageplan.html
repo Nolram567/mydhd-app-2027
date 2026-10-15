@@ -18,17 +18,25 @@
         <div class="lageplan-page">
             <h2>Lage & Umgebung</h2>
 
-            <div class="map-placeholder lageplan-placeholder">
-                <span class="material-icons map-icon">map</span>
-                <p>Lageplan-Grafik folgt in Kürze.</p>
-            </div>
-
             <div class="lageplan-info">
-                <p>Hier finden Sie zukünftig Informationen zur Lage und Umgebung des Konferenzgeländes, inklusive Lageplan mit allen Gebäuden, Hörsälen und Ausstellungsflächen der DHd 2027.</p>
+                <p>Hier finden Sie Informationen zur Lage und Umgebung des Konferenzgeländes, inklusive Lageplan mit allen Gebäuden, Hörsälen und Ausstellungsflächen der DHd 2027.</p><br>
                 <p><em>Platzhaltertext:</em> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
             </div>
 
-            <div id="marburg-map" class="leaflet-map"></div>
+            <div id="marburg-map" class="leaflet-map" style="padding: 5pt;"></div>
+
+            <div class="lageplan-info" style="padding: 5pt;">
+                <p><br><em>Platzhaltertext:</em> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+
+            <div style="padding: 5pt;">
+                <img src="{{url_for('static', filename='images/_unimr_preview.png')}}" align="middle" />
+            </div>
+
+            <div class="lageplan-info">
+                <p><br><em>Platzhaltertext:</em> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+
         </div>
     </main>
 {% endblock %}
