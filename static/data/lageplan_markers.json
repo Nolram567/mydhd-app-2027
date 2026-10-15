@@ -1,8 +1,141 @@
-[
-    {
-        "name": "Marburger Schloss",
-        "lat": 50.809996,
-        "lng": 8.767088,
-        "description": "Platzhaltertext: Weitere Informationen folgen in Kürze."
-    }
-]
+{
+    "categories": {
+        "konferenz": {
+            "label": "Konferenzorte",
+            "color": "#88153c"
+        },
+        "gastronomie": {
+            "label": "Essen & Trinken",
+            "color": "#e07b00"
+        },
+        "unterkunft": {
+            "label": "Unterkünfte",
+            "color": "#0056b3"
+        },
+        "sehenswuerdigkeiten": {
+            "label": "Sehenswürdigkeiten",
+            "color": "#2e7d32"
+        }
+    },
+    "markers": [
+        {
+            "name": "Marburger Schloss",
+            "category": "konferenz",
+            "lat": 50.809996,
+            "lng": 8.767088,
+            "description": "Platzhaltertext: Weitere Informationen folgen in Kürze."
+        },
+        {
+            "name": "Testmarker: Hörsaalgebäude",
+            "category": "konferenz",
+            "lat": 50.8098,
+            "lng": 8.7737,
+            "description": "Testdatensatz – Hörsäle in der Biegenstraße."
+        },
+        {
+            "name": "Testmarker: Alte Universität",
+            "category": "konferenz",
+            "lat": 50.8105,
+            "lng": 8.7698,
+            "description": "Testdatensatz – Aula und Seminarräume."
+        },
+        {
+            "name": "Testmarker: Campus Lahnberge",
+            "category": "konferenz",
+            "lat": 50.8105,
+            "lng": 8.8085,
+            "description": "Testdatensatz – Workshopräume."
+        },
+        {
+            "name": "Testmarker: Café am Markt",
+            "category": "gastronomie",
+            "lat": 50.8095,
+            "lng": 8.769,
+            "description": "Testdatensatz – Kaffee und Kuchen in der Oberstadt."
+        },
+        {
+            "name": "Testmarker: Restaurant Oberstadt",
+            "category": "gastronomie",
+            "lat": 50.8112,
+            "lng": 8.7672,
+            "description": "Testdatensatz – Regionale Küche."
+        },
+        {
+            "name": "Testmarker: Biergarten an der Lahn",
+            "category": "gastronomie",
+            "lat": 50.804,
+            "lng": 8.772,
+            "description": "Testdatensatz – Ideal für den Konferenzabend."
+        },
+        {
+            "name": "Testmarker: Gasthaus Cappel",
+            "category": "gastronomie",
+            "lat": 50.78,
+            "lng": 8.76,
+            "description": "Testdatensatz – Etwas außerhalb im Süden."
+        },
+        {
+            "name": "Testmarker: Hotel am Hauptbahnhof",
+            "category": "unterkunft",
+            "lat": 50.819,
+            "lng": 8.774,
+            "description": "Testdatensatz – Direkt am Bahnhof."
+        },
+        {
+            "name": "Testmarker: Hotel Südviertel",
+            "category": "unterkunft",
+            "lat": 50.799,
+            "lng": 8.764,
+            "description": "Testdatensatz – Ruhige Lage im Südviertel."
+        },
+        {
+            "name": "Testmarker: Pension Wehrda",
+            "category": "unterkunft",
+            "lat": 50.836,
+            "lng": 8.755,
+            "description": "Testdatensatz – Günstige Unterkunft im Norden."
+        },
+        {
+            "name": "Testmarker: Gästehaus Marbach",
+            "category": "unterkunft",
+            "lat": 50.817,
+            "lng": 8.738,
+            "description": "Testdatensatz – Westlich der Innenstadt."
+        },
+        {
+            "name": "Testmarker: Elisabethkirche",
+            "category": "sehenswuerdigkeiten",
+            "lat": 50.8146,
+            "lng": 8.7705,
+            "description": "Testdatensatz – Älteste rein gotische Kirche Deutschlands."
+        },
+        {
+            "name": "Testmarker: Marktplatz mit Rathaus",
+            "category": "sehenswuerdigkeiten",
+            "lat": 50.8099,
+            "lng": 8.7684,
+            "description": "Testdatensatz – Historisches Rathaus in der Oberstadt."
+        },
+        {
+            "name": "Testmarker: Alter Botanischer Garten",
+            "category": "sehenswuerdigkeiten",
+            "lat": 50.8125,
+            "lng": 8.7727,
+            "description": "Testdatensatz – Grünanlage am Rand der Innenstadt."
+        },
+        {
+            "name": "Testmarker: Spiegelslustturm",
+            "category": "sehenswuerdigkeiten",
+            "lat": 50.8064,
+            "lng": 8.7895,
+            "description": "Testdatensatz – Aussichtsturm mit Blick über Marburg."
+        },
+        {
+            "name": "Testmarker: Botanischer Garten Lahnberge",
+            "category": "sehenswuerdigkeiten",
+            "lat": 50.805,
+            "lng": 8.807,
+            "description": "Testdatensatz – Gewächshäuser und Freiland auf den Lahnbergen."
+        }
+    ]
+}

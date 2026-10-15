@@ -569,6 +569,56 @@ body {
     z-index: 0;
 }
 
+.marker-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.marker-filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 16px;
+    background: var(--card-bg);
+    color: #999;
+    font-size: 0.9rem;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.marker-filter-btn.active {
+    color: var(--text-color);
+    border-color: #888;
+    opacity: 1;
+}
+
+.marker-filter-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.map-pin-wrapper {
+    background: none;
+    border: none;
+}
+
+.map-pin {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin: 0 2px;
+    border: 2px solid #fff;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
 .btn-primary {
     display: inline-block;
     background-color: var(--primary-color);
