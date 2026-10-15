@@ -78,6 +78,10 @@ def root():
 def lageplan_page():
     return render_template('lageplan.html')
 
+@app.route('/aktuelles.html')
+def aktuelles_page():
+    return render_template('aktuelles.html')
+
 @app.route('/Lageplan.pdf')
 def lageplan():
     return send_from_directory(os.path.join(STATIC_DIR, 'assets'), 'Lageplan.pdf')
