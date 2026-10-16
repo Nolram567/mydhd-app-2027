@@ -50,11 +50,20 @@ A personal conference companion for [DHd 2027](https://dhd2026.digitalhumanities
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-pip install flask werkzeug
+pip install -r requirements.txt
 python server.py
 ```
 
 The app will be available at `http://localhost:5000`.
+
+### Mastodon feed: Account Posts and hashtag feed
+
+The `fedihum.org` instance requires authentication for hashtag timelines. 
+To activate the feed, you need:
+- A mastodon account
+- Create a Mastodon application with the `read:statuses` scope, copy `.env.example` to `.env`, and put its access token after `MASTODON_ACCESS_TOKEN=`. The actual `.env` file is git-ignored. Never put the token in browser JavaScript or commit it to the repository. The Flask app proxies hashtag requests so the token remains server-side. Restart the Flask server after changing `.env`.
+
+-> Under 'static/js/news_feed.js' you can change which account, which hashtag(s) and which post limit should be used to create the Mastodon News Feed.
 
 ## API endpoints
 
