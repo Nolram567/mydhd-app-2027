@@ -1152,3 +1152,38 @@ a.menu-item {
     padding: 1.5rem 0;
     text-align: center;
 }
+
+
+/* Aktuelles Page */
+.aktuelles-page h2 {
+    margin-bottom: 0.75rem;
+}
+
+.aktuelles-page > p {
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+/* Aktuelles Meldungen */
+.aktuelles-meldung {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.aktuelles-meldung h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.aktuelles-meldung small {
+    color: #666;
+    font-size: 0.85rem;
+}
+

@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Raumänderung",
+    "message": "Der Workshop findet jetzt in Raum 02 statt.",
+    "date": "2027-03-03",
+    "important": true
+  },
+  {
+    "id": 2,
+    "title": "Programmänderung",
+    "message": "Der Vortrag beginnt um 14:30 Uhr.",
+    "date": "2027-03-03",
+    "important": false
+  }
+]
