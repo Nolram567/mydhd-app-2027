@@ -12,8 +12,8 @@
             "label": "Unterkünfte",
             "color": "#0056b3"
         },
-        "sehenswuerdigkeiten": {
-            "label": "Sehenswürdigkeiten",
+        "rahmenprogramm": {
+            "label": "Rahmenprogramm",
             "color": "#2e7d32"
         }
     },
@@ -103,39 +103,53 @@
             "description": "Testdatensatz – Westlich der Innenstadt."
         },
         {
-            "name": "Testmarker: Elisabethkirche",
-            "category": "sehenswuerdigkeiten",
-            "lat": 50.8146,
-            "lng": 8.7705,
-            "description": "Testdatensatz – Älteste rein gotische Kirche Deutschlands."
+            "name": "Forschungszentrum Deutscher Sprachatlas",
+            "category": "rahmenprogramm",
+            "lat": 50.810969,
+            "lng": 8.772273,
+            "description": "Pilgrimstein 16"
         },
         {
-            "name": "Testmarker: Marktplatz mit Rathaus",
-            "category": "sehenswuerdigkeiten",
-            "lat": 50.8099,
-            "lng": 8.7684,
-            "description": "Testdatensatz – Historisches Rathaus in der Oberstadt."
+            "name": "Handschriftencensus",
+            "category": "rahmenprogramm",
+            "lat": 50.814262,
+            "lng": 8.771504,
+            "description": "Deutschhausstraße 3"
         },
         {
-            "name": "Testmarker: Alter Botanischer Garten",
-            "category": "sehenswuerdigkeiten",
-            "lat": 50.8125,
-            "lng": 8.7727,
-            "description": "Testdatensatz – Grünanlage am Rand der Innenstadt."
+            "name": "Herder-Institut für historische Ostmitteleuropaforschung",
+            "category": "rahmenprogramm",
+            "lat": 50.808988,
+            "lng": 8.760766,
+            "description": "Gisonenweg 5–7"
         },
         {
-            "name": "Testmarker: Spiegelslustturm",
-            "category": "sehenswuerdigkeiten",
-            "lat": 50.8064,
-            "lng": 8.7895,
-            "description": "Testdatensatz – Aussichtsturm mit Blick über Marburg."
+            "name": "Hessisches Landesarchiv",
+            "category": "rahmenprogramm",
+            "lat": 50.803865,
+            "lng": 8.76258,
+            "description": "Friedrichsplatz 15"
         },
         {
-            "name": "Testmarker: Botanischer Garten Lahnberge",
-            "category": "sehenswuerdigkeiten",
-            "lat": 50.805,
-            "lng": 8.807,
-            "description": "Testdatensatz – Gewächshäuser und Freiland auf den Lahnbergen."
+            "name": "KFZ",
+            "category": "rahmenprogramm",
+            "lat": 50.809909,
+            "lng": 8.774741,
+            "description": "Biegenstraße"
+        },
+        {
+            "name": "Kunstmuseum",
+            "category": "rahmenprogramm",
+            "lat": 50.810027,
+            "lng": 8.774485,
+            "description": "Biegenstraße 11"
+        },
+        {
+            "name": "HIL",
+            "category": "rahmenprogramm",
+            "lat": 50.810113,
+            "lng": 8.779756,
+            "description": "Turm C, Wilhelm-Röpke-Straße 6"
         }
     ]
 }
