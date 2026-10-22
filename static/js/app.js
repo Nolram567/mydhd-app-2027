@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     applyInitialTabFromHash();
     fetchData();
     updateAuthUI();
+    checkAktuellesPopup();
 });
 
 // Apply a #my/#all hash immediately on load, before the (async) program fetch
@@ -1579,3 +1580,46 @@ window.addEventListener('click', function(event) {
         closePersonModal();
     }
 });
+
+// Aktuelles Popup
+
+let aktuellesMessages = [];
+let currentAktuelles = null;
+
+async function checkAktuellesPopup() {
+    const response = await fetch('data/aktuelles_meldungen.json');
+    const messages = await response.json();
+
+    const seenIds = JSON.parse(
+        localStorage.getItem('dhd2027_seen_aktuelles') || '[]'
+    );
+
+// Each message needs a unique numeric ID (e.g., 1, 2, 3).
+// New IDs trigger a one-time pop-up when the app is opened.
+    aktuellesMessages = messages.filter(msg => !seenIds.includes(msg.id));
+
+    showNextAktuellesModal();
+}
+
+function showNextAktuellesModal() {
+    if (aktuellesMessages.length === 0) return;
+
+    currentAktuelles = aktuellesMessages.shift();
+
+    document.getElementById('aktuelles-modal-title').textContent = currentAktuelles.title;
+    document.getElementById('aktuelles-modal-body').textContent = currentAktuelles.message;
+    document.getElementById('aktuelles-modal').classList.remove('hidden');
+}
+
+function closeAktuellesModal() {
+    document.getElementById('aktuelles-modal').classList.add('hidden');
+
+    const seenIds = JSON.parse(
+        localStorage.getItem('dhd2027_seen_aktuelles') || '[]'
+    );
+
+    seenIds.push(currentAktuelles.id);
+    localStorage.setItem('dhd2027_seen_aktuelles', JSON.stringify(seenIds));
+
+    showNextAktuellesModal();
+}
