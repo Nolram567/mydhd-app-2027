@@ -103,6 +103,7 @@ function switchTab(tab) {
     }
 
     render();
+    checkAktuellesPopup();
 }
 
 // --- Auth Functions ---
@@ -1585,10 +1586,30 @@ window.addEventListener('click', function(event) {
 
 let aktuellesMessages = [];
 let currentAktuelles = null;
+let aktuellesCheckRunning = false;
+
+// Re-check when the app comes back to the foreground (e.g. after switching apps)
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') checkAktuellesPopup();
+});
 
 async function checkAktuellesPopup() {
-    const response = await fetch('data/aktuelles_meldungen.json');
-    const messages = await response.json();
+    // Don't interrupt a popup that is currently shown or a check in progress
+    if (aktuellesCheckRunning) return;
+    if (!document.getElementById('aktuelles-modal').classList.contains('hidden')) return;
+    aktuellesCheckRunning = true;
+
+    let messages;
+    try {
+        // no-cache: always ask the server so new messages show up promptly
+        const response = await fetch('data/aktuelles_meldungen.json', { cache: 'no-cache' });
+        messages = await response.json();
+    } catch (error) {
+        console.error('Error loading Aktuelles:', error);
+        return;
+    } finally {
+        aktuellesCheckRunning = false;
+    }
 
     const seenIds = JSON.parse(
         localStorage.getItem('dhd2027_seen_aktuelles') || '[]'
@@ -1618,7 +1639,7 @@ function closeAktuellesModal() {
         localStorage.getItem('dhd2027_seen_aktuelles') || '[]'
     );
 
-    seenIds.push(currentAktuelles.id);
+    if (!seenIds.includes(currentAktuelles.id)) seenIds.push(currentAktuelles.id);
     localStorage.setItem('dhd2027_seen_aktuelles', JSON.stringify(seenIds));
 
     showNextAktuellesModal();
