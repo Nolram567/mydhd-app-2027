@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     applyInitialTabFromHash();
     fetchData();
     updateAuthUI();
+    checkAktuellesPopup();
 });
 
 // Apply a #my/#all hash immediately on load, before the (async) program fetch
@@ -102,6 +103,7 @@ function switchTab(tab) {
     }
 
     render();
+    checkAktuellesPopup();
 }
 
 // --- Auth Functions ---
@@ -1579,3 +1581,66 @@ window.addEventListener('click', function(event) {
         closePersonModal();
     }
 });
+
+// Aktuelles Popup
+
+let aktuellesMessages = [];
+let currentAktuelles = null;
+let aktuellesCheckRunning = false;
+
+// Re-check when the app comes back to the foreground (e.g. after switching apps)
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') checkAktuellesPopup();
+});
+
+async function checkAktuellesPopup() {
+    // Don't interrupt a popup that is currently shown or a check in progress
+    if (aktuellesCheckRunning) return;
+    if (!document.getElementById('aktuelles-modal').classList.contains('hidden')) return;
+    aktuellesCheckRunning = true;
+
+    let messages;
+    try {
+        // no-cache: always ask the server so new messages show up promptly
+        const response = await fetch('data/aktuelles_meldungen.json', { cache: 'no-cache' });
+        messages = await response.json();
+    } catch (error) {
+        console.error('Error loading Aktuelles:', error);
+        return;
+    } finally {
+        aktuellesCheckRunning = false;
+    }
+
+    const seenIds = JSON.parse(
+        localStorage.getItem('dhd2027_seen_aktuelles') || '[]'
+    );
+
+// Each message needs a unique numeric ID (e.g., 1, 2, 3).
+// New IDs trigger a one-time pop-up when the app is opened.
+    aktuellesMessages = messages.filter(msg => !seenIds.includes(msg.id));
+
+    showNextAktuellesModal();
+}
+
+function showNextAktuellesModal() {
+    if (aktuellesMessages.length === 0) return;
+
+    currentAktuelles = aktuellesMessages.shift();
+
+    document.getElementById('aktuelles-modal-title').textContent = currentAktuelles.title;
+    document.getElementById('aktuelles-modal-body').textContent = currentAktuelles.message;
+    document.getElementById('aktuelles-modal').classList.remove('hidden');
+}
+
+function closeAktuellesModal() {
+    document.getElementById('aktuelles-modal').classList.add('hidden');
+
+    const seenIds = JSON.parse(
+        localStorage.getItem('dhd2027_seen_aktuelles') || '[]'
+    );
+
+    if (!seenIds.includes(currentAktuelles.id)) seenIds.push(currentAktuelles.id);
+    localStorage.setItem('dhd2027_seen_aktuelles', JSON.stringify(seenIds));
+
+    showNextAktuellesModal();
+}
