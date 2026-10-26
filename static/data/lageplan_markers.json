@@ -19,32 +19,39 @@
     },
     "markers": [
         {
-            "name": "Marburger Schloss",
+            "name": "Forschungszentrum Deutscher Sprachatlas",
             "category": "konferenz",
-            "lat": 50.809996,
-            "lng": 8.767088,
-            "description": "Platzhaltertext: Weitere Informationen folgen in Kürze."
+            "lat": 50.810969,
+            "lng": 8.772273,
+            "description": "Pilgrimstein 16, 35037 Marburg"
         },
         {
-            "name": "Testmarker: Hörsaalgebäude",
+            "name": "Deutsches Dokumentationszentrum für Kunstgeschichte - Bildarchiv Foto Marburg",
             "category": "konferenz",
-            "lat": 50.8098,
-            "lng": 8.7737,
-            "description": "Testdatensatz – Hörsäle in der Biegenstraße."
+            "lat": 50.810991,
+            "lng": 8.771771,
+            "description": "Pilgrimstein 14, 35037 Marburg"
         },
         {
-            "name": "Testmarker: Alte Universität",
+            "name": "Seminargebäude",
             "category": "konferenz",
-            "lat": 50.8105,
-            "lng": 8.7698,
-            "description": "Testdatensatz – Aula und Seminarräume."
+            "lat": 50.811369,
+            "lng": 8.771899,
+            "description": "Pilgrimstein 12, 35037 Marburg"
         },
         {
-            "name": "Testmarker: Campus Lahnberge",
+            "name": "Hörsaalgebäude",
             "category": "konferenz",
-            "lat": 50.8105,
-            "lng": 8.8085,
-            "description": "Testdatensatz – Workshopräume."
+            "lat": 50.810757,
+            "lng": 8.773285,
+            "description": "Biegenstraße 14, 35037 Marburg"
+        },
+        {
+            "name": "Aula der Alten Universität",
+            "category": "konferenz",
+            "lat": 50.808045,
+            "lng": 8.771983,
+            "description": "Lahntor 3, 35037 Marburg"
         },
         {
             "name": "Testmarker: Café am Markt",
@@ -75,32 +82,74 @@
             "description": "Testdatensatz – Etwas außerhalb im Süden."
         },
         {
-            "name": "Testmarker: Hotel am Hauptbahnhof",
+            "name": "Welcome Hotel Marburg",
             "category": "unterkunft",
-            "lat": 50.819,
-            "lng": 8.774,
-            "description": "Testdatensatz – Direkt am Bahnhof."
+            "lat": 50.809435,
+            "lng": 8.772704,
+            "description": "Pilgrimstein 29, 35037 Marburg"
         },
         {
-            "name": "Testmarker: Hotel Südviertel",
+            "name": "Marburger Hof",
             "category": "unterkunft",
-            "lat": 50.799,
-            "lng": 8.764,
-            "description": "Testdatensatz – Ruhige Lage im Südviertel."
+            "lat": 50.81558,
+            "lng": 8.768485,
+            "description": "Elisabethstraße 12, 35037 Marburg"
         },
         {
-            "name": "Testmarker: Pension Wehrda",
+            "name": "B&B Hotel",
             "category": "unterkunft",
-            "lat": 50.836,
-            "lng": 8.755,
-            "description": "Testdatensatz – Günstige Unterkunft im Norden."
+            "lat": 50.806463,
+            "lng": 8.769018,
+            "description": "Gutenbergstraße 6, 35037 Marburg"
         },
         {
-            "name": "Testmarker: Gästehaus Marbach",
+            "name": "Noxx",
             "category": "unterkunft",
-            "lat": 50.817,
-            "lng": 8.738,
-            "description": "Testdatensatz – Westlich der Innenstadt."
+            "lat": 50.816888,
+            "lng": 8.780365,
+            "description": "Rudolf-Bultmann-Str. 4m, 35039 Marburg"
+        },
+        {
+            "name": "Hotel Rosenpark",
+            "category": "unterkunft",
+            "lat": 50.818771,
+            "lng": 8.768302,
+            "description": "Anneliese-Pohl-Allee 7–17, 35037 Marburg"
+        },
+        {
+            "name": "Kornspeicher",
+            "category": "unterkunft",
+            "lat": 50.791881,
+            "lng": 8.763594,
+            "description": "Molkereistraße 6, 35039 Marburg"
+        },
+        {
+            "name": "Hotel Carle",
+            "category": "unterkunft",
+            "lat": 50.775256,
+            "lng": 8.766746,
+            "description": "Ronhäuser Str. 8, 35043 Marburg-Cappel"
+        },
+        {
+            "name": "Stadthotel Marburg",
+            "category": "unterkunft",
+            "lat": 50.817091,
+            "lng": 8.770309,
+            "description": "Bahnhofstraße 14, 35037 Marburg"
+        },
+        {
+            "name": "Gästehaus Tabor",
+            "category": "unterkunft",
+            "lat": 50.8201,
+            "lng": 8.784478,
+            "description": "Dürerstraße 43, 35039 Marburg"
+        },
+        {
+            "name": "Jugendherberge Marburg",
+            "category": "unterkunft",
+            "lat": 50.804043,
+            "lng": 8.773413,
+            "description": "Jahnstr. 1, 35037 Marburg"
         },
         {
             "name": "Forschungszentrum Deutscher Sprachatlas",
