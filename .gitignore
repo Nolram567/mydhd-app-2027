@@ -22,3 +22,6 @@ __pycache__/
 .idea
 .editorconfig
 Thumbs.db
+
+# project specific
+public

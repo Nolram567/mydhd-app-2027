@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% set page = 'aktuelles' %}
+{% set active_tab = 'aktuelles' %}
+
+{% block title %}
+    Aktuelles – My DHd App
+{% endblock %}
+
+{% block content %}
+    <main class="content">
+        <div class="aktuelles-page">
+            <h2>Aktuelles</h2>
+
+            <p>
+                Hier finden Sie wichtige aktuelle
+                Mitteilungen zur DHd 2027.
+            </p>
+            
+            <div id="meldungen-liste">
+                <p>Meldungen werden geladen...</p>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+
+{% block extra_scripts %}
+    <script>
+        // Meldungen werden separat in aktuelles_meldungen.json gepflegt
+        fetch('data/aktuelles_meldungen.json')
+            .then(response => response.json())
+            .then(meldungen => {
+                const liste = document.getElementById('meldungen-liste');
+                liste.innerHTML = '';
+
+                meldungen.forEach(meldung => {
+                    const artikel = document.createElement('article');
+                    artikel.className = 'aktuelles-meldung';
+                   
+
+                    const titel = document.createElement('h3');
+                    titel.textContent = meldung.title;
+
+                    const beschreibung = document.createElement('p');
+                    beschreibung.textContent = meldung.message;
+
+                    const datum = document.createElement('small');
+                    datum.textContent = meldung.date;
+
+                    artikel.appendChild(titel);
+                    artikel.appendChild(beschreibung);
+                    artikel.appendChild(datum);
+
+                    liste.appendChild(artikel);
+                });
+            })
+            .catch(error => console.error('Fehler beim Laden der Meldungen:', error));
+    </script>
+{% endblock %}
+

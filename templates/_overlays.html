@@ -44,6 +44,11 @@
                     <span class="material-icons">rss_feed</span> News Feed
                 </a>
             </li>
+            <li>
+                <a class="menu-item" href="aktuelles.html" onclick="toggleMenu()">
+                    <span class="material-icons">campaign</span> Aktuelles
+                </a>
+            </li>
             <li class="menu-divider"></li>
             <li id="menu-login" class="menu-item" onclick="toggleMenu(); openLoginModal();">
                 <span class="material-icons">login</span> Login / Registrieren
@@ -83,6 +88,15 @@
         <span class="close-modal" onclick="closeInfoModal()">&times;</span>
         <h2 id="info-modal-title"></h2>
         <div id="info-modal-body"></div>
+    </div>
+</div>
+
+<!-- Aktuelles Popup -->
+<div id="aktuelles-modal" class="toast hidden">
+    <div class="toast-content">
+        <span class="material-icons info-icon">info</span>
+        <p><strong id="aktuelles-modal-title"></strong><br><span id="aktuelles-modal-body"></span></p>
+        <button onclick="closeAktuellesModal()" class="close-btn">&times;</button>
     </div>
 </div>
 

@@ -1,5 +1,5 @@
 <header class="app-header">
-    <h1>MyDHd 2027</h1>
+    <h1>MyDHd˽2027</h1>
     <nav class="main-nav">
         {% if page == 'index' %}
         <button id="btn-all" class="nav-btn {{ 'active' if active_tab == 'all' }}" onclick="switchTab('all')">Übersicht</button>
@@ -10,6 +10,7 @@
         {% endif %}
         <a id="btn-map" class="nav-btn {{ 'active' if active_tab == 'map' }}" href="lageplan.html">Lage & Umgebung</a>
         <a id="btn-news-feed" class="nav-btn {{ 'active' if active_tab == 'news-feed' }}" href="news-feed.html">News Feed</a>
+        <a id="btn-aktuelles" class="nav-btn {{ 'active' if active_tab == 'aktuelles' }}" href="aktuelles.html">Aktuelles</a>
     </nav>
     <button class="hamburger-btn" onclick="toggleMenu()">
         <span class="material-icons">menu</span>

@@ -89,6 +89,10 @@ def lageplan_page():
 def news_feed_page():
     return render_template('news_feed.html')
 
+@app.route('/aktuelles.html')
+def aktuelles_page():
+    return render_template('aktuelles.html')
+
 @app.route('/Lageplan.pdf')
 def lageplan():
     return send_from_directory(os.path.join(STATIC_DIR, 'assets'), 'Lageplan.pdf')

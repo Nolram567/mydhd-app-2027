@@ -23,6 +23,7 @@
                 <p><em>Platzhaltertext:</em> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
             </div>
 
+            <div id="marker-filter" class="marker-filter" role="group" aria-label="Marker filtern"></div>
             <div id="marburg-map" class="leaflet-map" style="padding: 5pt;"></div>
 
             <div class="lageplan-info" style="padding: 5pt;">
@@ -50,16 +51,70 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-Mitwirkende'
         }).addTo(marburgMap);
 
-        // Marker werden separat in lageplan_markers.json gepflegt
+        // Farbiger Pin als divIcon, Farbe kommt aus der Kategorie
+        function createMarkerIcon(color) {
+            const pin = document.createElement('span');
+            pin.className = 'map-pin';
+            pin.style.backgroundColor = color;
+            return L.divIcon({
+                className: 'map-pin-wrapper',
+                html: pin,
+                iconSize: [24, 24],
+                iconAnchor: [12, 24],
+                popupAnchor: [0, -24]
+            });
+        }
+
+        // Ein Button pro Kategorie, blendet die zugehörige LayerGroup ein/aus
+        function renderMarkerFilter(categories, layers) {
+            const filter = document.getElementById('marker-filter');
+            Object.entries(categories).forEach(([key, category]) => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'marker-filter-btn active';
+                button.setAttribute('aria-pressed', 'true');
+                button.innerHTML = `<span class="marker-filter-dot"></span>${escapeHtml(category.label)}`;
+                button.querySelector('.marker-filter-dot').style.backgroundColor = category.color;
+                button.addEventListener('click', () => {
+                    const visible = marburgMap.hasLayer(layers[key]);
+                    if (visible) {
+                        marburgMap.removeLayer(layers[key]);
+                    } else {
+                        marburgMap.addLayer(layers[key]);
+                    }
+                    button.classList.toggle('active', !visible);
+                    button.setAttribute('aria-pressed', String(!visible));
+                });
+                filter.appendChild(button);
+            });
+        }
+
+        // Kategorien und Marker werden separat in lageplan_markers.json gepflegt
         fetch('data/lageplan_markers.json')
             .then(response => response.json())
-            .then(markers => {
-                markers.forEach(marker => {
-                    const popupText = marker.description
-                        ? `<strong>${escapeHtml(marker.name)}</strong><br>${escapeHtml(marker.description)}`
-                        : `<strong>${escapeHtml(marker.name)}</strong>`;
-                    L.marker([marker.lat, marker.lng]).addTo(marburgMap).bindPopup(popupText);
+            .then(data => {
+                const categories = data.categories;
+                const layers = {};
+                Object.keys(categories).forEach(key => {
+                    layers[key] = L.layerGroup().addTo(marburgMap);
                 });
+
+                data.markers.forEach(marker => {
+                    const category = categories[marker.category];
+                    if (!category) {
+                        console.warn(`Unbekannte Kategorie "${marker.category}" für Marker "${marker.name}"`);
+                        return;
+                    }
+                    let popupText = `<strong>${escapeHtml(marker.name)}</strong><br><em>${escapeHtml(category.label)}</em>`;
+                    if (marker.description) {
+                        popupText += `<br>${escapeHtml(marker.description)}`;
+                    }
+                    L.marker([marker.lat, marker.lng], { icon: createMarkerIcon(category.color) })
+                        .bindPopup(popupText)
+                        .addTo(layers[marker.category]);
+                });
+
+                renderMarkerFilter(categories, layers);
             })
             .catch(error => console.error('Fehler beim Laden der Marker:', error));
     </script>
