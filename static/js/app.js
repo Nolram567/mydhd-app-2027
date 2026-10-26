@@ -94,14 +94,6 @@ function switchTab(tab) {
     document.querySelectorAll('.main-nav .nav-btn').forEach(btn => btn.classList.remove('active'));
     document.getElementById(`btn-${tab}`).classList.add('active');
 
-    // Show login hint only on "my" tab AND if not logged in
-    const hint = document.getElementById('login-hint');
-    if (tab === 'my' && !currentUser) {
-        hint.classList.remove('hidden');
-    } else {
-        hint.classList.add('hidden');
-    }
-
     render();
     checkAktuellesPopup();
 }
@@ -189,7 +181,6 @@ async function logout() {
 }
 
 function updateAuthUI() {
-    const hint = document.getElementById('login-hint');
     const menuLogin = document.getElementById('menu-login');
     const menuUser = document.getElementById('menu-user');
     const menuLogout = document.getElementById('menu-logout');
@@ -200,7 +191,6 @@ function updateAuthUI() {
         menuUser.classList.remove('hidden');
         menuLogout.classList.remove('hidden');
         menuUsername.textContent = currentUser;
-        hint.classList.add('hidden');
     } else {
         menuLogin.classList.remove('hidden');
         menuUser.classList.add('hidden');
@@ -1207,8 +1197,6 @@ function navigateToSession(bookmarkId, presIndex, instant) {
     currentTab = 'all';
     document.querySelectorAll('.main-nav .nav-btn').forEach(btn => btn.classList.remove('active'));
     document.getElementById('btn-all').classList.add('active');
-    const loginHint = document.getElementById('login-hint');
-    if (loginHint) loginHint.classList.add('hidden');
     // Reset filters so the session is visible
     currentDay = null;
     currentTimeSlot = null;
@@ -1260,10 +1248,6 @@ function openPersonIndexFor(name) {
             firstHeader.click();
         }
     }, 50);
-}
-
-function closeToast() {
-    document.getElementById('login-hint').classList.add('hidden');
 }
 
 function openMap(locationName) {
