@@ -84,8 +84,8 @@
         {
             "name": "Welcome Hotel Marburg",
             "category": "unterkunft",
-            "lat": 50.809435,
-            "lng": 8.772704,
+            "lat": 50.809517,
+            "lng": 8.772453,
             "description": "Pilgrimstein 29, 35037 Marburg"
         },
         {
@@ -105,9 +105,16 @@
         {
             "name": "Noxx",
             "category": "unterkunft",
-            "lat": 50.816888,
-            "lng": 8.780365,
+            "lat": 50.817233,
+            "lng": 8.777686,
             "description": "Rudolf-Bultmann-Str. 4m, 35039 Marburg"
+        },
+        {
+            "name": "Waggonhalle Marburg",
+            "category": "unterkunft",
+            "lat": 50.816959,
+            "lng": 8.778737,
+            "description": "Rudolf-Bultmann-Str. 2a, 35039 Marburg"
         },
         {
             "name": "Hotel Rosenpark",
