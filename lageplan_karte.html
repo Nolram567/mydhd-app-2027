@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lageplan DHd 2027</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            background: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        #marburg-map {
+            position: absolute;
+            inset: 0;
+        }
+
+        .marker-filter {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px;
+            max-width: calc(100vw - 80px);
+        }
+
+        .marker-filter-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-radius: 16px;
+            background: #fff;
+            color: #999;
+            font: inherit;
+            font-size: 0.85rem;
+            cursor: pointer;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .marker-filter-btn.active {
+            color: #333;
+            border-color: #888;
+        }
+
+        .marker-filter-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .marker-filter-btn:not(.active) .marker-filter-dot {
+            opacity: 0.4;
+        }
+
+        .map-pin-wrapper {
+            background: none;
+            border: none;
+        }
+
+        .map-pin {
+            display: block;
+            width: 20px;
+            height: 20px;
+            margin: 0 2px;
+            border: 2px solid #fff;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            z-index: 1000;
+            padding: 6px 12px;
+            border-radius: 6px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            font-size: 0.85rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .scroll-hint.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="marburg-map"></div>
+    <div id="scroll-hint" class="scroll-hint">Zum Zoomen in die Karte klicken</div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        // Statischer Export aus static/data/lageplan_markers.json (ohne "Essen & Trinken")
+        const MARKER_DATA = {
+    "categories": {
+        "konferenz": {
+            "label": "Konferenzorte",
+            "color": "#88153c"
+        },
+        "unterkunft": {
+            "label": "Unterkünfte",
+            "color": "#0056b3"
+        },
+        "rahmenprogramm": {
+            "label": "Rahmenprogramm",
+            "color": "#2e7d32"
+        }
+    },
+    "markers": [
+        {
+            "name": "Forschungszentrum Deutscher Sprachatlas",
+            "category": "konferenz",
+            "lat": 50.810969,
+            "lng": 8.772273,
+            "description": "Pilgrimstein 16, 35037 Marburg"
+        },
+        {
+            "name": "Deutsches Dokumentationszentrum für Kunstgeschichte - Bildarchiv Foto Marburg",
+            "category": "konferenz",
+            "lat": 50.810991,
+            "lng": 8.771771,
+            "description": "Pilgrimstein 14, 35037 Marburg"
+        },
+        {
+            "name": "Seminargebäude",
+            "category": "konferenz",
+            "lat": 50.811369,
+            "lng": 8.771899,
+            "description": "Pilgrimstein 12, 35037 Marburg"
+        },
+        {
+            "name": "Hörsaalgebäude",
+            "category": "konferenz",
+            "lat": 50.810757,
+            "lng": 8.773285,
+            "description": "Biegenstraße 14, 35037 Marburg"
+        },
+        {
+            "name": "Aula der Alten Universität",
+            "category": "konferenz",
+            "lat": 50.808045,
+            "lng": 8.771983,
+            "description": "Lahntor 3, 35037 Marburg"
+        },
+        {
+            "name": "Welcome Hotel Marburg",
+            "category": "unterkunft",
+            "lat": 50.809449,
+            "lng": 8.772564,
+            "description": "Pilgrimstein 29, 35037 Marburg"
+        },
+        {
+            "name": "Marburger Hof",
+            "category": "unterkunft",
+            "lat": 50.81558,
+            "lng": 8.768485,
+            "description": "Elisabethstraße 12, 35037 Marburg"
+        },
+        {
+            "name": "B&B Hotel",
+            "category": "unterkunft",
+            "lat": 50.806463,
+            "lng": 8.769018,
+            "description": "Gutenbergstraße 6, 35037 Marburg"
+        },
+        {
+            "name": "Noxx",
+            "category": "unterkunft",
+            "lat": 50.8171404,
+            "lng": 8.7777898,
+            "description": "Rudolf-Bultmann-Str. 4m, 35039 Marburg"
+        },
+        {
+            "name": "Hotel Rosenpark",
+            "category": "unterkunft",
+            "lat": 50.818771,
+            "lng": 8.768302,
+            "description": "Anneliese-Pohl-Allee 7–17, 35037 Marburg"
+        },
+        {
+            "name": "Kornspeicher",
+            "category": "unterkunft",
+            "lat": 50.791881,
+            "lng": 8.763594,
+            "description": "Molkereistraße 6, 35039 Marburg"
+        },
+        {
+            "name": "Hotel Carle",
+            "category": "unterkunft",
+            "lat": 50.775256,
+            "lng": 8.766746,
+            "description": "Ronhäuser Str. 8, 35043 Marburg-Cappel"
+        },
+        {
+            "name": "Stadthotel Marburg",
+            "category": "unterkunft",
+            "lat": 50.817091,
+            "lng": 8.770309,
+            "description": "Bahnhofstraße 14, 35037 Marburg"
+        },
+        {
+            "name": "Gästehaus Tabor",
+            "category": "unterkunft",
+            "lat": 50.8201,
+            "lng": 8.784478,
+            "description": "Dürerstraße 43, 35039 Marburg"
+        },
+        {
+            "name": "Jugendherberge Marburg",
+            "category": "unterkunft",
+            "lat": 50.804043,
+            "lng": 8.773413,
+            "description": "Jahnstr. 1, 35037 Marburg"
+        },
+        {
+            "name": "Forschungszentrum Deutscher Sprachatlas",
+            "category": "rahmenprogramm",
+            "lat": 50.810969,
+            "lng": 8.772273,
+            "description": "Pilgrimstein 16"
+        },
+        {
+            "name": "Handschriftencensus",
+            "category": "rahmenprogramm",
+            "lat": 50.814262,
+            "lng": 8.771504,
+            "description": "Deutschhausstraße 3"
+        },
+        {
+            "name": "Herder-Institut für historische Ostmitteleuropaforschung",
+            "category": "rahmenprogramm",
+            "lat": 50.808988,
+            "lng": 8.760766,
+            "description": "Gisonenweg 5–7"
+        },
+        {
+            "name": "Hessisches Landesarchiv",
+            "category": "rahmenprogramm",
+            "lat": 50.803865,
+            "lng": 8.76258,
+            "description": "Friedrichsplatz 15"
+        },
+        {
+            "name": "KFZ",
+            "category": "rahmenprogramm",
+            "lat": 50.809909,
+            "lng": 8.774741,
+            "description": "Biegenstraße"
+        },
+        {
+            "name": "Kunstmuseum",
+            "category": "rahmenprogramm",
+            "lat": 50.810027,
+            "lng": 8.774485,
+            "description": "Biegenstraße 11"
+        },
+        {
+            "name": "HIL",
+            "category": "rahmenprogramm",
+            "lat": 50.810113,
+            "lng": 8.779756,
+            "description": "Turm C, Wilhelm-Röpke-Straße 6"
+        }
+    ]
+};
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Mausrad-Zoom erst nach Klick, damit die umgebende Seite im IFrame scrollbar bleibt
+        const marburgMap = L.map('marburg-map', { scrollWheelZoom: false });
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>-Mitwirkende'
+        }).addTo(marburgMap);
+
+        const scrollHint = document.getElementById('scroll-hint');
+        let hintTimeout;
+        marburgMap.on('click', () => marburgMap.scrollWheelZoom.enable());
+        marburgMap.getContainer().addEventListener('mouseleave', () => marburgMap.scrollWheelZoom.disable());
+        marburgMap.getContainer().addEventListener('wheel', () => {
+            if (marburgMap.scrollWheelZoom.enabled()) return;
+            scrollHint.classList.add('visible');
+            clearTimeout(hintTimeout);
+            hintTimeout = setTimeout(() => scrollHint.classList.remove('visible'), 1500);
+        }, { passive: true });
+
+        // Farbiger Pin als divIcon, Farbe kommt aus der Kategorie
+        function createMarkerIcon(color) {
+            const pin = document.createElement('span');
+            pin.className = 'map-pin';
+            pin.style.backgroundColor = color;
+            return L.divIcon({
+                className: 'map-pin-wrapper',
+                html: pin,
+                iconSize: [24, 24],
+                iconAnchor: [12, 24],
+                popupAnchor: [0, -24]
+            });
+        }
+
+        const categories = MARKER_DATA.categories;
+        const layers = {};
+        Object.keys(categories).forEach(key => {
+            layers[key] = L.layerGroup().addTo(marburgMap);
+        });
+
+        const bounds = [];
+        MARKER_DATA.markers.forEach(marker => {
+            const category = categories[marker.category];
+            if (!category) return;
+            let popupText = `<strong>${escapeHtml(marker.name)}</strong><br><em>${escapeHtml(category.label)}</em>`;
+            if (marker.description) {
+                popupText += `<br>${escapeHtml(marker.description)}`;
+            }
+            const route = `https://www.openstreetmap.org/directions?to=${marker.lat}%2C${marker.lng}`;
+            popupText += `<br><a href="${route}" target="_blank" rel="noopener">Route planen</a>`;
+            L.marker([marker.lat, marker.lng], { icon: createMarkerIcon(category.color) })
+                .bindPopup(popupText)
+                .addTo(layers[marker.category]);
+            bounds.push([marker.lat, marker.lng]);
+        });
+
+        if (bounds.length) {
+            marburgMap.fitBounds(bounds, { padding: [40, 40] });
+        } else {
+            marburgMap.setView([50.8021, 8.7667], 14);
+        }
+
+        // Filter als Leaflet-Control oben in der Karte, ein Button pro Kategorie
+        const FilterControl = L.Control.extend({
+            options: { position: 'topright' },
+            onAdd: function () {
+                const container = L.DomUtil.create('div', 'marker-filter');
+                container.setAttribute('role', 'group');
+                container.setAttribute('aria-label', 'Marker filtern');
+                L.DomEvent.disableClickPropagation(container);
+                Object.entries(categories).forEach(([key, category]) => {
+                    const button = L.DomUtil.create('button', 'marker-filter-btn active', container);
+                    button.type = 'button';
+                    button.setAttribute('aria-pressed', 'true');
+                    button.innerHTML = `<span class="marker-filter-dot"></span>${escapeHtml(category.label)}`;
+                    button.querySelector('.marker-filter-dot').style.backgroundColor = category.color;
+                    button.addEventListener('click', () => {
+                        const visible = marburgMap.hasLayer(layers[key]);
+                        if (visible) {
+                            marburgMap.removeLayer(layers[key]);
+                        } else {
+                            marburgMap.addLayer(layers[key]);
+                        }
+                        button.classList.toggle('active', !visible);
+                        button.setAttribute('aria-pressed', String(!visible));
+                    });
+                });
+                return container;
+            }
+        });
+        new FilterControl().addTo(marburgMap);
+    </script>
+</body>
+</html>
