@@ -186,6 +186,11 @@ function updateAuthUI() {
     const menuLogout = document.getElementById('menu-logout');
     const menuUsername = document.getElementById('menu-username');
 
+    // Login menu has been removed.
+    if (!menuLogin || !menuUser || !menuLogout || !menuUsername) {
+        return;
+    }
+
     if (currentUser) {
         menuLogin.classList.add('hidden');
         menuUser.classList.remove('hidden');
@@ -1292,7 +1297,6 @@ const INFO_PAGES = {
             <p><strong>Zeitfilter:</strong> Nach Auswahl eines Tages erscheinen Zeitfenster-Buttons zur weiteren Eingrenzung.</p>
             <p><strong>Lesezeichen:</strong> Tippen Sie auf das Lesezeichen-Symbol einer Session, um sie zu „Mein Programm" hinzuzufügen.</p>
             <p><strong>Mein Programm:</strong> Wechseln Sie zum Tab „Mein Programm", um nur Ihre gespeicherten Sessions zu sehen.</p>
-            <p><strong>Login:</strong> Erstellen Sie ein Konto, um Ihr Programm geräteübergreifend zu speichern. Ohne Login werden Lesezeichen nur lokal im Browser gespeichert.</p>
             <p><strong>Abstracts:</strong> Klicken Sie auf den Titel einer Session, um Abstracts und Einzelvorträge ein- oder auszublenden.</p>
         `
     },
