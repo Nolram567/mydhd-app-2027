@@ -1278,16 +1278,15 @@ const INFO_PAGES = {
     about: {
         title: 'Über die App',
         html: `
-            <p>Diese App begleitet Sie durch das Programm der <strong>DHd 2026</strong> – der Jahrestagung des Verbands „Digital Humanities im deutschsprachigen Raum" in Wien.</p>
+            <p>Diese App begleitet Sie durch das Programm der <strong>DHd 2027</strong> – der Jahrestagung des Verbands „Digital Humanities im deutschsprachigen Raum" in Marburg.</p>
             <p>Das Konferenzprogramm umfasst eine Vielzahl an Sessions, Workshops und Postern. Mit dieser App können Sie sich gezielt Ihren eigenen Konferenzfahrplan zusammenstellen und den Überblick behalten.</p>
             <p>Funktionen:</p>
             <ul>
                 <li>Gesamtes Programm durchsuchen und nach Tag oder Zeitfenster filtern</li>
                 <li>Einzelne Sessions und Poster als Lesezeichen vormerken</li>
                 <li>Unter „Mein Programm" alle vorgemerkten Beiträge auf einen Blick sehen</li>
-                <li>Mit einem Konto Ihre Auswahl dauerhaft und geräteübergreifend speichern</li>
             </ul>
-            <p style="margin-top:1em;">Die in dieser App enthaltenen Informationen wurden von der offiziellen Konferenzwebsite <strong>Hier Link der 2027er Webseite einfügen, sobald verfügbar</strong> entnommen.</p>
+            <p style="margin-top:1em;">Die in dieser App enthaltenen Informationen zum Programm wurden von der offiziellen Konferenzwebsite <strong><a href="https://dhd2027.digitalhumanities.de/" target="_blank" rel="noopener">https://dhd2027.digitalhumanities.de/</a></strong> entnommen.</p>
             `
     },
     help: {
