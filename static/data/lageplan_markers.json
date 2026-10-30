@@ -49,8 +49,8 @@
         {
             "name": "Aula der Alten Universität",
             "category": "konferenz",
-            "lat": 50.808045,
-            "lng": 8.771983,
+            "lat": 50.808052,
+            "lng": 8.771330,
             "description": "Lahntor 3, 35037 Marburg"
         },
         {
@@ -152,13 +152,6 @@
             "description": "Jahnstr. 1, 35037 Marburg"
         },
         {
-            "name": "Forschungszentrum Deutscher Sprachatlas",
-            "category": "rahmenprogramm",
-            "lat": 50.810969,
-            "lng": 8.772273,
-            "description": "Pilgrimstein 16"
-        },
-        {
             "name": "Handschriftencensus",
             "category": "rahmenprogramm",
             "lat": 50.814262,
@@ -182,8 +175,8 @@
         {
             "name": "KFZ",
             "category": "rahmenprogramm",
-            "lat": 50.809909,
-            "lng": 8.774741,
+            "lat": 50.810486,
+            "lng": 8.774900,
             "description": "Biegenstraße"
         },
         {
