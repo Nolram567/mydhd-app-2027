@@ -1,27 +1,3 @@
-<!-- Auth Modal -->
-<div id="auth-modal" class="modal hidden">
-    <div class="modal-content auth-content">
-        <span class="close-modal" onclick="closeAuthModal()">&times;</span>
-        <div class="auth-tabs">
-            <button id="tab-login" class="auth-tab active" onclick="switchAuthMode('login')">Login</button>
-            <button id="tab-register" class="auth-tab" onclick="switchAuthMode('register')">Registrieren</button>
-        </div>
-
-        <form id="auth-form" onsubmit="handleAuth(event)">
-            <div class="form-group">
-                <label for="username">Benutzername</label>
-                <input type="text" id="username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Passwort</label>
-                <input type="password" id="password" required>
-            </div>
-            <p id="auth-error" class="error-msg"></p>
-            <button type="submit" id="auth-submit-btn" class="btn-primary full-width">Einloggen</button>
-        </form>
-    </div>
-</div>
-
 <!-- Menu Overlay -->
 <div id="menu-overlay" class="menu-overlay hidden" onclick="toggleMenu()">
     <div class="menu-panel" onclick="event.stopPropagation()">

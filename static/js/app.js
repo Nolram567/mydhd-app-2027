@@ -3,7 +3,6 @@ history.scrollRestoration = 'manual';
 document.addEventListener('DOMContentLoaded', () => {
     applyInitialTabFromHash();
     fetchData();
-    updateAuthUI();
     checkAktuellesPopup();
 });
 
@@ -36,8 +35,6 @@ const TIME_SLOTS = {
     '2026-02-26': ['9:00\u201310:30', '11:00\u201312:30', '12:30\u201314:00', '14:00\u201315:30', '16:00\u201317:30', 'ab 18:00'],
     '2026-02-27': ['9:00\u201310:30', '11:00\u201312:30', 'ab 14:00']
 };
-let currentUser = null; // username if logged in
-let currentAuthMode = 'login'; // 'login' or 'register'
 
 // --- Utility: escape HTML to prevent XSS ---
 function escapeHtml(str) {
@@ -56,30 +53,6 @@ async function fetchData() {
         buildPersonIndex();
         render();
 
-        // Validate server session if user was previously logged in
-        const storedUser = localStorage.getItem('dhd2026_user');
-        if (storedUser) {
-            try {
-                const meResp = await fetch('/api/me');
-                if (meResp.ok) {
-                    const meData = await meResp.json();
-                    currentUser = meData.username;
-                    // Merge server bookmarks with local bookmarks
-                    if (meData.saved_sessions && meData.saved_sessions.length > 0) {
-                        mergeBookmarks(meData.saved_sessions, meData.saved_posters, meData.saved_talks);
-                    }
-                    updateAuthUI();
-                    render();
-                } else {
-                    // Session expired or invalid — clean up
-                    localStorage.removeItem('dhd2026_user');
-                }
-            } catch (e) {
-                // Server unreachable — keep local-only mode
-                localStorage.removeItem('dhd2026_user');
-            }
-        }
-
         navigateToHash();
 
     } catch (error) {
@@ -96,186 +69,6 @@ function switchTab(tab) {
 
     render();
     checkAktuellesPopup();
-}
-
-// --- Auth Functions ---
-
-function openLoginModal() {
-    document.getElementById('auth-modal').classList.remove('hidden');
-    switchAuthMode('login');
-}
-
-function closeAuthModal() {
-    document.getElementById('auth-modal').classList.add('hidden');
-    document.getElementById('auth-error').textContent = '';
-    document.getElementById('auth-error').className = 'error-msg';
-    document.getElementById('auth-form').reset();
-}
-
-function switchAuthMode(mode) {
-    currentAuthMode = mode;
-    document.getElementById('tab-login').classList.toggle('active', mode === 'login');
-    document.getElementById('tab-register').classList.toggle('active', mode === 'register');
-    document.getElementById('auth-submit-btn').textContent = mode === 'login' ? 'Einloggen' : 'Registrieren';
-    document.getElementById('auth-error').textContent = '';
-    document.getElementById('auth-error').className = 'error-msg';
-}
-
-async function handleAuth(event) {
-    event.preventDefault();
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    const errorMsg = document.getElementById('auth-error');
-
-    const endpoint = currentAuthMode === 'login' ? '/api/login' : '/api/register';
-
-    try {
-        const response = await fetch(endpoint, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, password })
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(data.error || 'Ein Fehler ist aufgetreten.');
-        }
-
-        if (currentAuthMode === 'register') {
-             switchAuthMode('login');
-             errorMsg.textContent = 'Registrierung erfolgreich. Bitte einloggen.';
-             errorMsg.className = 'error-msg success-msg';
-        } else {
-            // Login successful
-            currentUser = username;
-            localStorage.setItem('dhd2026_user', username);
-
-            // Merge server bookmarks with local bookmarks (union of both)
-            if (data.saved_sessions && Array.isArray(data.saved_sessions)) {
-                mergeBookmarks(data.saved_sessions, data.saved_posters, data.saved_talks);
-            } else {
-                await syncProgram();
-            }
-
-            closeAuthModal();
-            updateAuthUI();
-            render();
-        }
-    } catch (err) {
-        errorMsg.textContent = err.message;
-        errorMsg.className = 'error-msg';
-    }
-}
-
-async function logout() {
-    try {
-        await fetch('/api/logout', { method: 'POST' });
-    } catch (e) {
-        // Logout from UI regardless
-    }
-    currentUser = null;
-    localStorage.removeItem('dhd2026_user');
-    updateAuthUI();
-    render();
-}
-
-function updateAuthUI() {
-    const menuLogin = document.getElementById('menu-login');
-    const menuUser = document.getElementById('menu-user');
-    const menuLogout = document.getElementById('menu-logout');
-    const menuUsername = document.getElementById('menu-username');
-
-    // Login menu has been removed.
-    if (!menuLogin || !menuUser || !menuLogout || !menuUsername) {
-        return;
-    }
-
-    if (currentUser) {
-        menuLogin.classList.add('hidden');
-        menuUser.classList.remove('hidden');
-        menuLogout.classList.remove('hidden');
-        menuUsername.textContent = currentUser;
-    } else {
-        menuLogin.classList.remove('hidden');
-        menuUser.classList.add('hidden');
-        menuLogout.classList.add('hidden');
-    }
-}
-
-async function syncProgram() {
-    if (!currentUser) return;
-    try {
-        const resp = await fetch('/api/save_program', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                sessions: [...savedSessionIds],
-                posters: [...savedPosterIds],
-                talks: [...savedTalkIds]
-            })
-        });
-        if (!resp.ok) {
-            showSyncError();
-        }
-    } catch (e) {
-        console.error("Sync failed", e);
-        showSyncError();
-    }
-}
-
-function mergeBookmarks(serverSessions, serverPosters, serverTalks) {
-    for (const id of serverSessions) {
-        savedSessionIds.add(id);
-    }
-    localStorage.setItem('dhd2026_saved_sessions', JSON.stringify([...savedSessionIds]));
-    if (serverPosters) {
-        for (const id of serverPosters) {
-            savedPosterIds.add(id);
-        }
-        localStorage.setItem('dhd2026_saved_posters', JSON.stringify([...savedPosterIds]));
-    }
-    if (serverTalks) {
-        for (const id of serverTalks) {
-            savedTalkIds.add(id);
-        }
-        localStorage.setItem('dhd2026_saved_talks', JSON.stringify([...savedTalkIds]));
-    }
-    syncProgram();
-}
-
-function showSyncError() {
-    const existing = document.getElementById('sync-error-toast');
-    if (existing) existing.remove();
-
-    const toast = document.createElement('div');
-    toast.id = 'sync-error-toast';
-    toast.className = 'toast';
-    toast.innerHTML = '';
-
-    const content = document.createElement('div');
-    content.className = 'toast-content';
-
-    const icon = document.createElement('span');
-    icon.className = 'material-icons info-icon';
-    icon.style.color = '#ff5252';
-    icon.textContent = 'cloud_off';
-    content.appendChild(icon);
-
-    const p = document.createElement('p');
-    p.textContent = 'Speichern fehlgeschlagen. Änderungen sind nur lokal gespeichert.';
-    content.appendChild(p);
-
-    const closeBtn = document.createElement('button');
-    closeBtn.className = 'close-btn';
-    closeBtn.textContent = '\u00d7';
-    closeBtn.addEventListener('click', () => toast.remove());
-    content.appendChild(closeBtn);
-
-    toast.appendChild(content);
-    document.body.appendChild(toast);
-
-    setTimeout(() => toast.remove(), 5000);
 }
 
 function shareSession(title, time, location, anchor) {
@@ -473,10 +266,6 @@ function togglePosterBookmark(id) {
     }
     localStorage.setItem('dhd2026_saved_posters', JSON.stringify([...savedPosterIds]));
 
-    if (currentUser) {
-        syncProgram();
-    }
-
     if (currentTab === 'my') {
         render();
     } else {
@@ -502,10 +291,6 @@ function toggleTalkBookmark(id) {
     }
     localStorage.setItem('dhd2026_saved_talks', JSON.stringify([...savedTalkIds]));
 
-    if (currentUser) {
-        syncProgram();
-    }
-
     if (currentTab === 'my') {
         render();
     } else {
@@ -530,10 +315,6 @@ function toggleBookmark(id) {
         savedSessionIds.add(id);
     }
     localStorage.setItem('dhd2026_saved_sessions', JSON.stringify([...savedSessionIds]));
-
-    if (currentUser) {
-        syncProgram();
-    }
 
     if (currentTab === 'my') {
         render();
@@ -1552,14 +1333,10 @@ function renderPersonList(persons) {
 // Close modals when clicking outside
 window.addEventListener('click', function(event) {
     const mapModal = document.getElementById('map-modal');
-    const authModal = document.getElementById('auth-modal');
     const infoModal = document.getElementById('info-modal');
     const personModal = document.getElementById('person-modal');
     if (event.target === mapModal) {
         mapModal.classList.add('hidden');
-    }
-    if (event.target === authModal) {
-        closeAuthModal();
     }
     if (event.target === infoModal) {
         closeInfoModal();

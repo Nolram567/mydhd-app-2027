@@ -20,14 +20,13 @@ A personal conference companion for [DHd 2027](https://dhd2026.digitalhumanities
 |-------|-----------|
 | Frontend | Vanilla JavaScript, HTML, CSS |
 | Backend | Python / Flask |
-| Database | SQLite (user accounts & bookmarks) |
 | Icons | Google Material Icons |
 
 ## Project structure
 
 ```
 .
-├── server.py                        # Flask backend (auth, bookmark sync API)
+├── server.py                        # Flask backend (pages, Mastodon proxy)
 ├── static/
 │   ├── index.html                   # Single-page app shell
 │   ├── lageplan.html                # Lage & Umgebung page (map)
@@ -41,8 +40,7 @@ A personal conference companion for [DHd 2027](https://dhd2026.digitalhumanities
 │   │   └── lageplan_markers.json    # Map markers for Lage & Umgebung
 │   └── assets/                      # Images, PDFs, and other static assets
 ├── extract_abstracts.py             # Data extraction helper
-├── extract_authors.py               # Data extraction helper
-└── conference.db                    # SQLite database (git-ignored)
+└── extract_authors.py               # Data extraction helper
 ```
 
 ## Running locally
@@ -69,11 +67,7 @@ To activate the feed, you need:
 
 | Method | Path | Description |
 |--------|------|-------------|
-| POST | `/api/register` | Create a new account |
-| POST | `/api/login` | Log in |
-| POST | `/api/logout` | Log out |
-| GET | `/api/me` | Get current user & bookmarks |
-| POST | `/api/save_program` | Sync bookmarks to server |
+| GET | `/api/mastodon/timelines/tag/<hashtag>` | Proxy for fedihum.org hashtag timelines |
 
 ## Credits
 
