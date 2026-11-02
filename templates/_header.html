@@ -1,5 +1,11 @@
 <header class="app-header">
-    <h1>MyDHd˽2027</h1>
+    <h1>
+        <img
+            src="{{ url_for('static', filename='images/Mind_the_gap_Schrift_Pfade-04 copy.svg') }}"
+            alt="DHd 2027"
+            class="conference-logo"
+        >
+    </h1>
     <nav class="main-nav">
         {% if page == 'index' %}
         <button id="btn-all" class="nav-btn {{ 'active' if active_tab == 'all' }}" onclick="switchTab('all')">Übersicht</button>
