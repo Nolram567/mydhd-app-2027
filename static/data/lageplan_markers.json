@@ -53,33 +53,54 @@
             "lng": 8.771330,
             "description": "Lahntor 3, 35037 Marburg"
         },
-        {
-            "name": "Testmarker: Café am Markt",
-            "category": "gastronomie",
-            "lat": 50.8095,
-            "lng": 8.769,
-            "description": "Testdatensatz – Kaffee und Kuchen in der Oberstadt."
+         {
+            "name": "Café am Markt",
+            "category": "konferenz",
+            "lat": 50.8091530,
+            "lng": 8.7706508,
+            "description": "Kaffee und Kuchen in einem modernen Café in der Oberstadt"
         },
         {
-            "name": "Testmarker: Restaurant Oberstadt",
-            "category": "gastronomie",
-            "lat": 50.8112,
-            "lng": 8.7672,
-            "description": "Testdatensatz – Regionale Küche."
+            "name": "Die Pause",
+            "category": "konferenz",
+            "lat": 50.8100179,
+            "lng": 8.7710797,
+            "description": "Gemütliches Café in der Oberstadt mit süßen und herzhaften Speisen"
         },
         {
-            "name": "Testmarker: Biergarten an der Lahn",
-            "category": "gastronomie",
-            "lat": 50.804,
-            "lng": 8.772,
-            "description": "Testdatensatz – Ideal für den Konferenzabend."
+            "name": "Blé Noir",
+            "category": "konferenz",
+            "lat": 50.8078751,
+            "lng": 8.7744968,
+            "description": "Bretonische Küche in einem kleinen Restaurant mit Galettes für jeden Geschmack"
         },
         {
-            "name": "Testmarker: Gasthaus Cappel",
-            "category": "gastronomie",
-            "lat": 50.78,
-            "lng": 8.76,
-            "description": "Testdatensatz – Etwas außerhalb im Süden."
+            "name": "Zur Sonne",
+            "category": "konferenz",
+            "lat": 50.8093045,
+            "lng": 8.7705315,
+            "description": "Traditionelles Gasthaus am Marktplatz, in dem schon die Brüder Grimm zu Gast waren"
+        },
+        {
+            "name": "Multi Kulti Mini Mensa",
+            "category": "konferenz",
+            "lat": 50.8151390,
+            "lng": 8.7689479,
+            "description": "Ein Imbiss mit einer breiten Auswahl an ausgewogenen Gerichten, besonders gut geeignet für Mittagspause"
+        },
+        {
+            "name": "Damoa",
+            "category": "konferenz",
+            "lat": 50.8140697,
+            "lng": 8.7692738,
+            "description": "Koreanisches Restaurant in der Nähe der Oberstadt und der Elisabethkirche"
+        },
+        {
+            "name": "Lezzet-i Mangal",
+            "category": "konferenz",
+            "lat": 50.8176528,
+            "lng": 8.7715424,
+            "description": "Türkisches Restaurant in der Nähe des Hauptbahnhofs mit einer großen Auswahl an traditionellen Gerichten"
         },
         {
             "name": "Welcome Hotel Marburg",
