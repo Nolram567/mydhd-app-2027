@@ -53,33 +53,47 @@
             "lng": 8.771330,
             "description": "Lahntor 3, 35037 Marburg"
         },
-        {
-            "name": "Testmarker: Café am Markt",
+         {
+            "name": "Café am Markt",
             "category": "gastronomie",
-            "lat": 50.8095,
-            "lng": 8.769,
-            "description": "Testdatensatz – Kaffee und Kuchen in der Oberstadt."
+            "lat": 50.8091530,
+            "lng": 8.7706508,
+            "description": "Markt 9, 35037 Marburg"
         },
         {
-            "name": "Testmarker: Restaurant Oberstadt",
+            "name": "Die Pause",
             "category": "gastronomie",
-            "lat": 50.8112,
-            "lng": 8.7672,
-            "description": "Testdatensatz – Regionale Küche."
+            "lat": 50.8100179,
+            "lng": 8.7710797,
+            "description": "Wettergasse 16, 35037 Marburg"
         },
         {
-            "name": "Testmarker: Biergarten an der Lahn",
+            "name": "Blé Noir",
             "category": "gastronomie",
-            "lat": 50.804,
-            "lng": 8.772,
-            "description": "Testdatensatz – Ideal für den Konferenzabend."
+            "lat": 50.8078751,
+            "lng": 8.7744968,
+            "description": "Elisabeth-Blochmann-Platz, Kleines Fachwerkhaus, 35037 Marburg"
         },
         {
-            "name": "Testmarker: Gasthaus Cappel",
+            "name": "Zur Sonne",
             "category": "gastronomie",
-            "lat": 50.78,
-            "lng": 8.76,
-            "description": "Testdatensatz – Etwas außerhalb im Süden."
+            "lat": 50.8093045,
+            "lng": 8.7705315,
+            "description": "Markt 14, 35037 Marburg"
+        },
+        {
+            "name": "Multi Kulti Mini Mensa",
+            "category": "gastronomie",
+            "lat": 50.8151390,
+            "lng": 8.7689479,
+            "description": "Elisabethstraße 6, 35037 Marburg"
+        },
+        {
+            "name": "Damoa",
+            "category": "gastronomie",
+            "lat": 50.8140697,
+            "lng": 8.7692738,
+            "description": "Steinweg 39, 35037 Marburg"
         },
         {
             "name": "Welcome Hotel Marburg",
