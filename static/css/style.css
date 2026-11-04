@@ -565,6 +565,33 @@ body {
     z-index: 0;
 }
 
+/* Maximierte Karte: Container füllt den gesamten Viewport */
+.map-container.maximized {
+    position: fixed;
+    inset: 0;
+    z-index: 5000;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background: var(--card-bg, #fff);
+}
+
+.map-container.maximized .leaflet-map {
+    flex: 1;
+    height: auto;
+}
+
+body.map-maximized {
+    overflow: hidden;
+}
+
+.map-maximize-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
 .marker-filter {
     display: flex;
     flex-wrap: wrap;
@@ -1120,3 +1147,6 @@ a.menu-item {
     font-size: 0.85rem;
 }
 
+ul li {
+  list-style-position: inside;
+}
