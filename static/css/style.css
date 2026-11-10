@@ -189,6 +189,10 @@ body {
     padding-top: 60px;
 }
 
+.content.subpage-content {
+    padding-top: 1rem;
+}
+
 .content.has-time-bar {
     padding-top: 96px;
 }
