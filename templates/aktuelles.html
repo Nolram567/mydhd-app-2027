@@ -27,8 +27,7 @@
 {% block extra_scripts %}
     <script>
         // Meldungen werden separat in aktuelles_meldungen.json gepflegt
-        fetch('data/aktuelles_meldungen.json')
-            .then(response => response.json())
+        loadAktuellesMeldungen()
             .then(meldungen => {
                 const liste = document.getElementById('meldungen-liste');
                 liste.innerHTML = '';

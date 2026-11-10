@@ -1352,6 +1352,54 @@ let aktuellesMessages = [];
 let currentAktuelles = null;
 let aktuellesCheckRunning = false;
 
+// Throttled loader for aktuelles_meldungen.json: at most one network request
+// per minute. The last response is cached in localStorage so the limit also
+// holds across page loads; within the interval the cached copy is returned.
+const AKTUELLES_FETCH_INTERVAL_MS = 60 * 1000;
+const AKTUELLES_CACHE_KEY = 'dhd2027_aktuelles_cache';
+let aktuellesInFlight = null;
+
+function readAktuellesCache() {
+    try {
+        const cached = JSON.parse(localStorage.getItem(AKTUELLES_CACHE_KEY));
+        if (cached && Array.isArray(cached.messages) && typeof cached.fetchedAt === 'number') {
+            return cached;
+        }
+    } catch (e) { /* storage unavailable or corrupt */ }
+    return null;
+}
+
+function loadAktuellesMeldungen() {
+    const cached = readAktuellesCache();
+    const age = cached ? Date.now() - cached.fetchedAt : Infinity;
+    if (cached && age >= 0 && age < AKTUELLES_FETCH_INTERVAL_MS) {
+        return Promise.resolve(cached.messages);
+    }
+    // Share a single request between concurrent callers
+    if (aktuellesInFlight) return aktuellesInFlight;
+
+    aktuellesInFlight = fetch('data/aktuelles_meldungen.json', { cache: 'no-cache' })
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return response.json();
+        })
+        .then(messages => {
+            try {
+                localStorage.setItem(AKTUELLES_CACHE_KEY,
+                    JSON.stringify({ fetchedAt: Date.now(), messages }));
+            } catch (e) { /* ignore */ }
+            return messages;
+        })
+        .catch(error => {
+            // Fall back to stale data if we have any
+            if (cached) return cached.messages;
+            throw error;
+        })
+        .finally(() => { aktuellesInFlight = null; });
+
+    return aktuellesInFlight;
+}
+
 // Re-check when the app comes back to the foreground (e.g. after switching apps)
 document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible') checkAktuellesPopup();
@@ -1365,9 +1413,7 @@ async function checkAktuellesPopup() {
 
     let messages;
     try {
-        // no-cache: always ask the server so new messages show up promptly
-        const response = await fetch('data/aktuelles_meldungen.json', { cache: 'no-cache' });
-        messages = await response.json();
+        messages = await loadAktuellesMeldungen();
     } catch (error) {
         console.error('Error loading Aktuelles:', error);
         return;
