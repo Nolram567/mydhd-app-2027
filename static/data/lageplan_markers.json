@@ -58,42 +58,49 @@
             "category": "gastronomie",
             "lat": 50.8091530,
             "lng": 8.7706508,
-            "description": "Markt 9, 35037 Marburg"
+            "description": "<strong>Paulas Empfehlung (Markt 9)</strong>:<br> Das <a href='https://www.das-cafe-marburg.de/' target='_blank'>Café am Markt</a> war lange Zeit ein traditionelles Café in der Marburger Oberstadt. Nach einem Besitzerwechsel vor einigen Jahren hat es sich zu einem jungen und modernen Café entwickelt. Neben der malerischen Kulisse direkt am historischen Rathaus lädt auch die liebevoll gestaltete Inneneinrichtung (inklusive pinkfarbener Teddybären) dazu ein, bei einer Tasse Kaffee, einem Stück Kuchen oder einer frisch gebackenen Waffel zu verweilen."
         },
         {
             "name": "Die Pause",
             "category": "gastronomie",
             "lat": 50.8100179,
             "lng": 8.7710797,
-            "description": "Wettergasse 16, 35037 Marburg"
+            "description": "<strong>Marlons Empfehlung: Die Pause (Wettergasse 16).</strong><br> Ein uriges und <a href='https://www.die-pause-marburg.de/' target='_blank'>gemütliches kleines Café</a>, das herzhafte und süße Speisen anbietet. Zwischen zwei steilen Treppenabschnitten in der Oberstadt gelegen, versprüht “Die Pause” einen unverwechselbaren Marburger Charme. Die Betreiber legen großen Wert auf Nachhaltigkeit und Regionalität und versuchen, möglichst viele der Zutaten selbst zu produzieren. Besonders empfehlenswert ist das Kimchi-Grilled-Cheese-Sandwich mit saisonalem Salat."
         },
         {
             "name": "Blé Noir",
             "category": "gastronomie",
             "lat": 50.8078751,
             "lng": 8.7744968,
-            "description": "Elisabeth-Blochmann-Platz, Kleines Fachwerkhaus, 35037 Marburg"
+            "description": "<strong>Alex’ Empfehlung: Blé Noir (Kleines Fachwerkhaus am Elisabeth-Blochmann-Platz)</strong><br> Eine gemütliche <a href='https://www.ble-noir.de/' target='_blank'>bretonische Galetterie</a>, die vor allem Galettes und Crêpes für jeden Geschmack bietet. Wer etwas Zeit mitbringt, wird mit gutem Essen belohnt. Für größere Gruppen eher nicht geeignet, da es nicht so viele Plätze gibt. Das Blé Noir bietet außerdem eine außergewöhnlich große Auswahl an Cidre und glutenfreie Optionen."
         },
         {
             "name": "Zur Sonne",
             "category": "gastronomie",
             "lat": 50.8093045,
             "lng": 8.7705315,
-            "description": "Markt 14, 35037 Marburg"
+            "description": "<strong>Maltes Empfehlung: Zur Sonne – ein Klassiker (Markt 14).</strong><br> Ein <a href='https://www.zur-sonne-marburg.de/' target='_blank'>traditionelles Wirtshaus am Marktplatz</a>, in dem schon die Brüder Grimm zu Gast waren. Auf der Karte stehen entsprechend Schnitzel oder Zwiebelrostbraten, aber inzwischen auch moderne Gerichte wie ein Petersilien-Risotto mit Mango-Chutney oder ein veganes Linsen-Curry. Es gibt mehrere Gasträume über zwei Ebenen, sodass auch etwas größere Gruppen dort Platz finden können. Der Sohn der Wirtsfamilie Tontara hat vor Kurzem um die Ecke das <a href='https://www.diefeinschmeckerbar.de/' target='_blank'>M19 (Marktgasse 19, 0175-1019019)</a> eröffnet, ein kleines Bistro mit saisonaler Karte und einer guten Weinauswahl, das hiermit ebenfalls empfohlen sei."
         },
         {
             "name": "Multi Kulti Mini Mensa",
             "category": "gastronomie",
             "lat": 50.8151390,
             "lng": 8.7689479,
-            "description": "Elisabethstraße 6, 35037 Marburg"
+            "description": "<strong>Luis Empfehlung: Multi Kulti Mini Mensa (Elisabethstraße 6).</strong><br> <a href='https://multikulti.sparissimofood.com/' target='_blank'>Ein Imbiss</a> mit einer breiten Auswahl an ausgewogenen Gerichten, besonders gut geeignet für die Mittagspause. Angeboten wird ein kleines Buffet aus Nudelgerichten, Reis, Gemüse und Salat; lange Wartezeiten hat man hier nie. Die Speisekarte bietet außerdem Pizza und Burger. Es werden vegane, vegetarische sowie Fleischgerichte angeboten und glutenfreie Option stehen zur Verfügung.</a>"
         },
         {
             "name": "Damoa",
             "category": "gastronomie",
             "lat": 50.8140697,
             "lng": 8.7692738,
-            "description": "Steinweg 39, 35037 Marburg"
+            "description": "<strong>Yunlins Empfehlung: Damoa (Steinweg 39)</strong><br> Ein <a href='https://www.damoa-marburg.de/' target='_blank'>koreanisches Restaurant</a> in der Nähe der Oberstadt und der Elisabethkirche mit verschiedenen asiatischen Gerichten. Besonders lecker sind das koreanische Festtagsgericht Bulgogi, Bibimbap und die Poké Bowls. Es gibt neben vegetarischen und veganen Optionen auch eine gute Auswahl an Sushi und leckeres Kimchi. Wegen der begrenzten Sitzplätze eher für kleinere Gruppen geeignet."
+        },
+        {
+            "name": "957 Ramen Bar",
+            "category": "gastronomie",
+            "lat": 50.8078584,
+            "lng": 8.7685038,
+            "description": "<strong>Julianas Empfehlung: 957 Ramen Bar (Krebsgasse 1).</strong><br> Ein japanisches Restaurant in Altstadtkulisse, das klassische Gerichte wie Yakisoba, Okonomiyaki oder Katsu Curry anbietet. Die namensgebenden Ramen kann man sich hier mit verschiedenen Topppings individualisieren und sie auch vegan oder vegetarisch genießen. Die große Häppchen-Karte lädt dazu ein, ganz in der Izakaya-Tradition (“japanische Tapas”) unterschiedliche Gerichte zu probieren und sie im geselligen Beisammensein zu teilen."
         },
         {
             "name": "Welcome Hotel Marburg",
