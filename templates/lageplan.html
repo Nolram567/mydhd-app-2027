@@ -159,7 +159,8 @@
                     }
                     let popupText = `<strong>${escapeHtml(marker.name)}</strong><br><em>${escapeHtml(category.label)}</em>`;
                     if (marker.description) {
-                        popupText += `<br>${escapeHtml(marker.description)}`;
+                        // description may contain HTML (trusted, maintained in lageplan_markers.json)
+                        popupText += `<br>${marker.description}`;
                     }
                     L.marker([marker.lat, marker.lng], { icon: createMarkerIcon(category.color) })
                         .bindPopup(popupText)
