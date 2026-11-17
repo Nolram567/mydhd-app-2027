@@ -102,7 +102,7 @@
         });
 
         const MaximizeControl = L.Control.extend({
-            options: { position: 'topright' },
+            options: { position: 'bottomleft' },
             onAdd: function () {
                 const wrapper = L.DomUtil.create('div', 'leaflet-bar');
                 maximizeButton = L.DomUtil.create('a', 'map-maximize-btn', wrapper);
