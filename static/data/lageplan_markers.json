@@ -15,6 +15,10 @@
         "rahmenprogramm": {
             "label": "Rahmenprogramm",
             "color": "#2e7d32"
+        },
+        "sehenswuerdigkeiten": {
+            "label": "Sehenswürdigkeiten",
+            "color": "#6a1b9a"
         }
     },
     "markers": [
@@ -58,49 +62,50 @@
             "category": "gastronomie",
             "lat": 50.8091530,
             "lng": 8.7706508,
-            "description": "<strong>Paulas Empfehlung (Markt 9)</strong>:<br> Das <a href='https://www.das-cafe-marburg.de/' target='_blank'>Café am Markt</a> war lange Zeit ein traditionelles Café in der Marburger Oberstadt. Nach einem Besitzerwechsel vor einigen Jahren hat es sich zu einem jungen und modernen Café entwickelt. Neben der malerischen Kulisse direkt am historischen Rathaus lädt auch die liebevoll gestaltete Inneneinrichtung (inklusive pinkfarbener Teddybären) dazu ein, bei einer Tasse Kaffee, einem Stück Kuchen oder einer frisch gebackenen Waffel zu verweilen."
+            "description": "<strong>Paulas Empfehlung (Markt 9)</strong>:<br> Das Café am Markt war lange Zeit ein traditionelles Café in der Marburger Oberstadt. Nach einem Besitzerwechsel vor einigen Jahren hat es sich zu einem jungen und modernen Café entwickelt. Neben der malerischen Kulisse direkt am historischen Rathaus lädt auch die liebevoll gestaltete Inneneinrichtung (inklusive pinkfarbener Teddybären) dazu ein, bei einer Tasse Kaffee, einem Stück Kuchen oder einer frisch gebackenen Waffel zu verweilen.<br><a href='https://www.das-cafe-marburg.de/' target='_blank'>www.das-cafe-marburg.de</a>"
         },
         {
             "name": "Die Pause",
             "category": "gastronomie",
             "lat": 50.8100179,
             "lng": 8.7710797,
-            "description": "<strong>Marlons Empfehlung: Die Pause (Wettergasse 16).</strong><br> Ein uriges und <a href='https://www.die-pause-marburg.de/' target='_blank'>gemütliches kleines Café</a>, das herzhafte und süße Speisen anbietet. Zwischen zwei steilen Treppenabschnitten in der Oberstadt gelegen, versprüht “Die Pause” einen unverwechselbaren Marburger Charme. Die Betreiber legen großen Wert auf Nachhaltigkeit und Regionalität und versuchen, möglichst viele der Zutaten selbst zu produzieren. Besonders empfehlenswert ist das Kimchi-Grilled-Cheese-Sandwich mit saisonalem Salat."
+            "description": "<strong>Marlons Empfehlung: Die Pause (Wettergasse 16).</strong><br> Ein uriges und gemütliches kleines Café, das herzhafte und süße Speisen anbietet. Zwischen zwei steilen Treppenabschnitten in der Oberstadt gelegen, versprüht “Die Pause” einen unverwechselbaren Marburger Charme. Die Betreiber legen großen Wert auf Nachhaltigkeit und Regionalität und versuchen, möglichst viele der Zutaten selbst zu produzieren. Besonders empfehlenswert ist das Kimchi-Grilled-Cheese-Sandwich mit saisonalem Salat.<br><a href='https://www.die-pause-marburg.de/' target='_blank'>www.die-pause-marburg.de</a>"
         },
         {
             "name": "Blé Noir",
             "category": "gastronomie",
             "lat": 50.8078751,
             "lng": 8.7744968,
-            "description": "<strong>Alex’ Empfehlung: Blé Noir (Kleines Fachwerkhaus am Elisabeth-Blochmann-Platz)</strong><br> Eine gemütliche <a href='https://www.ble-noir.de/' target='_blank'>bretonische Galetterie</a>, die vor allem Galettes und Crêpes für jeden Geschmack bietet. Wer etwas Zeit mitbringt, wird mit gutem Essen belohnt. Für größere Gruppen eher nicht geeignet, da es nicht so viele Plätze gibt. Das Blé Noir bietet außerdem eine außergewöhnlich große Auswahl an Cidre und glutenfreie Optionen."
+            "description": "<strong>Alex’ Empfehlung: Blé Noir (Kleines Fachwerkhaus am Elisabeth-Blochmann-Platz)</strong><br> Eine gemütliche bretonische Galetterie, die vor allem Galettes und Crêpes für jeden Geschmack bietet. Wer etwas Zeit mitbringt, wird mit gutem Essen belohnt. Für größere Gruppen eher nicht geeignet, da es nicht so viele Plätze gibt. Das Blé Noir bietet außerdem eine außergewöhnlich große Auswahl an Cidre und glutenfreie Optionen.<br><a href='https://www.ble-noir.de/' target='_blank'>www.ble-noir.de</a>"
         },
         {
+            "id": "zur-sonne",
             "name": "Zur Sonne",
             "category": "gastronomie",
             "lat": 50.8093045,
             "lng": 8.7705315,
-            "description": "<strong>Maltes Empfehlung: Zur Sonne – ein Klassiker (Markt 14).</strong><br> Ein <a href='https://www.zur-sonne-marburg.de/' target='_blank'>traditionelles Wirtshaus am Marktplatz</a>, in dem schon die Brüder Grimm zu Gast waren. Auf der Karte stehen entsprechend Schnitzel oder Zwiebelrostbraten, aber inzwischen auch moderne Gerichte wie ein Petersilien-Risotto mit Mango-Chutney oder ein veganes Linsen-Curry. Es gibt mehrere Gasträume über zwei Ebenen, sodass auch etwas größere Gruppen dort Platz finden können. Der Sohn der Wirtsfamilie Tontara hat vor Kurzem um die Ecke das <a href='https://www.diefeinschmeckerbar.de/' target='_blank'>M19 (Marktgasse 19, 0175-1019019)</a> eröffnet, ein kleines Bistro mit saisonaler Karte und einer guten Weinauswahl, das hiermit ebenfalls empfohlen sei."
+            "description": "<strong>Maltes Empfehlung: Zur Sonne – ein Klassiker (Markt 14).</strong><br> Ein traditionelles Wirtshaus am Marktplatz, in dem schon die Brüder Grimm zu Gast waren. Auf der Karte stehen entsprechend Schnitzel oder Zwiebelrostbraten, aber inzwischen auch moderne Gerichte wie ein Petersilien-Risotto mit Mango-Chutney oder ein veganes Linsen-Curry. Es gibt mehrere Gasträume über zwei Ebenen, sodass auch etwas größere Gruppen dort Platz finden können. Der Sohn der Wirtsfamilie Tontara hat vor Kurzem um die Ecke das M19 (Marktgasse 19, 0175-1019019) eröffnet, ein kleines Bistro mit saisonaler Karte und einer guten Weinauswahl, das hiermit ebenfalls empfohlen sei.<br><a href='https://www.zur-sonne-marburg.de/' target='_blank'>www.zur-sonne-marburg.de</a><br><a href='https://www.diefeinschmeckerbar.de/' target='_blank'>www.diefeinschmeckerbar.de</a>"
         },
         {
             "name": "Multi Kulti Mini Mensa",
             "category": "gastronomie",
             "lat": 50.8151390,
             "lng": 8.7689479,
-            "description": "<strong>Luis Empfehlung: Multi Kulti Mini Mensa (Elisabethstraße 6).</strong><br> <a href='https://multikulti.sparissimofood.com/' target='_blank'>Ein Imbiss</a> mit einer breiten Auswahl an ausgewogenen Gerichten, besonders gut geeignet für die Mittagspause. Angeboten wird ein kleines Buffet aus Nudelgerichten, Reis, Gemüse und Salat; lange Wartezeiten hat man hier nie. Die Speisekarte bietet außerdem Pizza und Burger. Es werden vegane, vegetarische sowie Fleischgerichte angeboten und glutenfreie Option stehen zur Verfügung.</a>"
+            "description": "<strong>Luis Empfehlung: Multi Kulti Mini Mensa (Elisabethstraße 6).</strong><br> Ein Imbiss mit einer breiten Auswahl an ausgewogenen Gerichten, besonders gut geeignet für die Mittagspause. Angeboten wird ein kleines Buffet aus Nudelgerichten, Reis, Gemüse und Salat; lange Wartezeiten hat man hier nie. Die Speisekarte bietet außerdem Pizza und Burger. Es werden vegane, vegetarische sowie Fleischgerichte angeboten und glutenfreie Option stehen zur Verfügung.<br><a href='https://multikulti.sparissimofood.com/' target='_blank'>multikulti.sparissimofood.com</a>"
         },
         {
             "name": "Damoa",
             "category": "gastronomie",
             "lat": 50.8140697,
             "lng": 8.7692738,
-            "description": "<strong>Yunlins Empfehlung: Damoa (Steinweg 39)</strong><br> Ein <a href='https://www.damoa-marburg.de/' target='_blank'>koreanisches Restaurant</a> in der Nähe der Oberstadt und der Elisabethkirche mit verschiedenen asiatischen Gerichten. Besonders lecker sind das koreanische Festtagsgericht Bulgogi, Bibimbap und die Poké Bowls. Es gibt neben vegetarischen und veganen Optionen auch eine gute Auswahl an Sushi und leckeres Kimchi. Wegen der begrenzten Sitzplätze eher für kleinere Gruppen geeignet."
+            "description": "<strong>Yunlins Empfehlung: Damoa (Steinweg 39)</strong><br> Ein koreanisches Restaurant in der Nähe der Oberstadt und der Elisabethkirche mit verschiedenen asiatischen Gerichten. Besonders lecker sind das koreanische Festtagsgericht Bulgogi, Bibimbap und die Poké Bowls. Es gibt neben vegetarischen und veganen Optionen auch eine gute Auswahl an Sushi und leckeres Kimchi. Wegen der begrenzten Sitzplätze eher für kleinere Gruppen geeignet.<br><a href='https://www.damoa-marburg.de/' target='_blank'>www.damoa-marburg.de</a>"
         },
         {
             "name": "957 Ramen Bar",
             "category": "gastronomie",
             "lat": 50.8078584,
             "lng": 8.7685038,
-            "description": "<strong>Julianas Empfehlung: 957 Ramen Bar (Krebsgasse 1).</strong><br> Ein japanisches Restaurant in Altstadtkulisse, das klassische Gerichte wie Yakisoba, Okonomiyaki oder Katsu Curry anbietet. Die namensgebenden Ramen kann man sich hier mit verschiedenen Topppings individualisieren und sie auch vegan oder vegetarisch genießen. Die große Häppchen-Karte lädt dazu ein, ganz in der Izakaya-Tradition (“japanische Tapas”) unterschiedliche Gerichte zu probieren und sie im geselligen Beisammensein zu teilen."
+            "description": "<strong>Julianas Empfehlung: 957 Ramen Bar (Krebsgasse 1).</strong><br> Ein japanisches Restaurant in Altstadtkulisse, das klassische Gerichte wie Yakisoba, Okonomiyaki oder Katsu Curry anbietet. Die namensgebenden Ramen kann man sich hier mit verschiedenen Topppings individualisieren und sie auch vegan oder vegetarisch genießen. Die große Häppchen-Karte lädt dazu ein, ganz in der Izakaya-Tradition (“japanische Tapas”) unterschiedliche Gerichte zu probieren und sie im geselligen Beisammensein zu teilen.<br><a href='https://957ramenbar.de/' target='_blank'>957ramenbar.de</a>"
         },
         {
             "name": "Welcome Hotel Marburg",
@@ -213,6 +218,36 @@
             "lat": 50.810113,
             "lng": 8.779756,
             "description": "Turm C, Wilhelm-Röpke-Straße 6"
+        },
+        {
+            "name": "St.-Michaels-Kapelle mit mittelalterlichem Friedhof",
+            "category": "sehenswuerdigkeiten",
+            "lat": 50.814972,
+            "lng": 8.768472
+        },
+        {
+            "name": "Alte Universität",
+            "category": "sehenswuerdigkeiten",
+            "lat": 50.80793,
+            "lng": 8.77179
+        },
+        {
+            "name": "Spiegelslustturm",
+            "category": "sehenswuerdigkeiten",
+            "lat": 50.81502,
+            "lng": 8.78906
+        },
+        {
+            "name": "Weidenhausen / Weidenhäuser Straße",
+            "category": "sehenswuerdigkeiten",
+            "lat": 50.807487,
+            "lng": 8.773884
+        },
+        {
+            "name": "Grüner Wehr / Hirsefeldsteg",
+            "category": "sehenswuerdigkeiten",
+            "lat": 50.803690,
+            "lng": 8.772480
         }
     ]
 }

@@ -624,6 +624,57 @@ body.map-maximized {
     opacity: 1;
 }
 
+/* Ausklappbare Kapitel unter der Karte */
+.lageplan-section {
+    margin: 1rem 0;
+    padding: 0.25rem 1rem;
+    text-align: left;
+    color: #555;
+    line-height: 1.5;
+    background: var(--card-bg);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.lageplan-section > summary {
+    cursor: pointer;
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: var(--text-color);
+    padding: 8px 0;
+}
+
+.lageplan-section[open] > summary {
+    margin-bottom: 4px;
+}
+
+.marker-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.marker-list > li {
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+}
+
+.marker-list > li > .map-link {
+    font-weight: bold;
+}
+
+.marker-list-description {
+    margin-top: 4px;
+}
+
+/* Links im Text, die einen Marker auf der Karte fokussieren */
+.map-link::before {
+    content: "📍";
+    margin-right: 2px;
+    font-size: 0.85em;
+}
+
 .marker-filter-dot {
     width: 10px;
     height: 10px;

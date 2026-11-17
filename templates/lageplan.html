@@ -37,17 +37,27 @@
                 <div id="marburg-map" class="leaflet-map" style="padding: 5pt;"></div>
             </div>
 
-            <div class="lageplan-info" style="padding: 5pt;">
-                <p><br><em>Platzhaltertext:</em> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-            </div>
-
-            <div style="padding: 5pt;">
-                <img src="{{url_for('static', filename='images/_unimr_preview.png')}}" align="middle" />
-            </div>
-
-            <div class="lageplan-info">
-                <p><br><em>Platzhaltertext:</em> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-            </div>
+            <!-- Die Listen werden aus den Markern der jeweiligen Kategorie (data-category) in lageplan_markers.json erzeugt -->
+            <details class="lageplan-section">
+                <summary>Konferenzorte</summary>
+                <ul class="marker-list" data-category="konferenz"></ul>
+            </details>
+            <details class="lageplan-section">
+                <summary>Rahmenprogramm</summary>
+                <ul class="marker-list" data-category="rahmenprogramm"></ul>
+            </details>
+            <details class="lageplan-section">
+                <summary>Unterkünfte</summary>
+                <ul class="marker-list" data-category="unterkunft"></ul>
+            </details>
+            <details class="lageplan-section">
+                <summary>Restaurantempfehlungen</summary>
+                <ul class="marker-list" data-category="gastronomie"></ul>
+            </details>
+            <details class="lageplan-section">
+                <summary>Sehenswürdigkeiten</summary>
+                <ul class="marker-list" data-category="sehenswuerdigkeiten"></ul>
+            </details>
 
         </div>
     </main>
@@ -77,7 +87,19 @@
             maximizeButton.setAttribute('aria-label', label);
             maximizeButton.setAttribute('aria-pressed', String(maximized));
             marburgMap.invalidateSize();
+            // Fokussierten Marker (offenes Popup) nach der Größenänderung wieder zentrieren
+            if (openPopup) {
+                marburgMap.panTo(openPopup.getLatLng(), { animate: false });
+                openPopup.update(); // passt die Ansicht an, damit das Popup ganz sichtbar ist
+            }
         }
+
+        // Aktuell geöffnetes Popup merken
+        let openPopup = null;
+        marburgMap.on('popupopen', event => { openPopup = event.popup; });
+        marburgMap.on('popupclose', event => {
+            if (openPopup === event.popup) openPopup = null;
+        });
 
         const MaximizeControl = L.Control.extend({
             options: { position: 'topright' },
@@ -117,25 +139,97 @@
             });
         }
 
+        // Marker mit "id" in lageplan_markers.json, ansprechbar über Links mit data-marker="<id>"
+        const markersById = {};
+        const filterButtons = {};
+
+        function setCategoryVisible(key, layer, visible) {
+            if (visible) {
+                marburgMap.addLayer(layer);
+            } else {
+                marburgMap.removeLayer(layer);
+            }
+            const button = filterButtons[key];
+            if (button) {
+                button.classList.toggle('active', visible);
+                button.setAttribute('aria-pressed', String(visible));
+            }
+        }
+
+        function focusMarker(id) {
+            const entry = markersById[id];
+            if (!entry) {
+                console.warn(`Kein Marker mit id "${id}" gefunden`);
+                return;
+            }
+            focusMarkerEntry(entry);
+        }
+
+        function focusMarkerEntry(entry) {
+            // Ausgeblendete Kategorie wieder einblenden
+            if (!marburgMap.hasLayer(entry.layer)) {
+                setCategoryVisible(entry.category, entry.layer, true);
+            }
+            const rect = mapContainer.getBoundingClientRect();
+            const inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
+            if (!inView && !mapContainer.classList.contains('maximized')) {
+                mapContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            const target = entry.marker.getLatLng();
+            const zoom = Math.max(marburgMap.getZoom(), 17);
+            if (marburgMap.getCenter().equals(target) && marburgMap.getZoom() === zoom) {
+                entry.marker.openPopup();
+                return;
+            }
+            marburgMap.once('moveend', () => entry.marker.openPopup());
+            marburgMap.flyTo(target, zoom);
+        }
+
+        document.addEventListener('click', event => {
+            const link = event.target.closest('[data-marker]');
+            if (!link) return;
+            event.preventDefault();
+            focusMarker(link.dataset.marker);
+        });
+
+        // Eintrag im ausklappbaren Kapitel der Kategorie (<ul class="marker-list" data-category="...">):
+        // Name springt zum Marker, darunter die Beschreibung (mit Links/Adresse) aus der JSON
+        function addMarkerListItem(marker, entry) {
+            const list = document.querySelector(`.marker-list[data-category="${marker.category}"]`);
+            if (!list) return;
+            const item = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = '#';
+            link.className = 'map-link';
+            link.textContent = marker.name;
+            link.addEventListener('click', event => {
+                event.preventDefault();
+                focusMarkerEntry(entry);
+            });
+            item.appendChild(link);
+            if (marker.description) {
+                const description = document.createElement('div');
+                description.className = 'marker-list-description';
+                // description may contain HTML (trusted, maintained in lageplan_markers.json)
+                description.innerHTML = marker.description;
+                item.appendChild(description);
+            }
+            list.appendChild(item);
+        }
+
         // Ein Button pro Kategorie, blendet die zugehörige LayerGroup ein/aus
         function renderMarkerFilter(categories, layers) {
             const filter = document.getElementById('marker-filter');
             Object.entries(categories).forEach(([key, category]) => {
                 const button = document.createElement('button');
+                filterButtons[key] = button;
                 button.type = 'button';
                 button.className = 'marker-filter-btn active';
                 button.setAttribute('aria-pressed', 'true');
                 button.innerHTML = `<span class="marker-filter-dot"></span>${escapeHtml(category.label)}`;
                 button.querySelector('.marker-filter-dot').style.backgroundColor = category.color;
                 button.addEventListener('click', () => {
-                    const visible = marburgMap.hasLayer(layers[key]);
-                    if (visible) {
-                        marburgMap.removeLayer(layers[key]);
-                    } else {
-                        marburgMap.addLayer(layers[key]);
-                    }
-                    button.classList.toggle('active', !visible);
-                    button.setAttribute('aria-pressed', String(!visible));
+                    setCategoryVisible(key, layers[key], !marburgMap.hasLayer(layers[key]));
                 });
                 filter.appendChild(button);
             });
@@ -162,9 +256,18 @@
                         // description may contain HTML (trusted, maintained in lageplan_markers.json)
                         popupText += `<br>${marker.description}`;
                     }
-                    L.marker([marker.lat, marker.lng], { icon: createMarkerIcon(category.color) })
+                    const leafletMarker = L.marker([marker.lat, marker.lng], { icon: createMarkerIcon(category.color) })
                         .bindPopup(popupText)
                         .addTo(layers[marker.category]);
+                    const entry = {
+                        marker: leafletMarker,
+                        category: marker.category,
+                        layer: layers[marker.category]
+                    };
+                    if (marker.id) {
+                        markersById[marker.id] = entry;
+                    }
+                    addMarkerListItem(marker, entry);
                 });
 
                 renderMarkerFilter(categories, layers);
