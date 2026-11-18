@@ -252,9 +252,11 @@
                         return;
                     }
                     let popupText = `<strong>${escapeHtml(marker.name)}</strong><br><em>${escapeHtml(category.label)}</em>`;
-                    if (marker.description) {
-                        // description may contain HTML (trusted, maintained in lageplan_markers.json)
-                        popupText += `<br>${marker.description}`;
+                    // Optionales "popup"-Feld: Kurztext fürs Pop-up; das Kapitel zeigt immer "description"
+                    const popupDescription = marker.popup || marker.description;
+                    if (popupDescription) {
+                        // may contain HTML (trusted, maintained in lageplan_markers.json)
+                        popupText += `<br>${popupDescription}`;
                     }
                     const leafletMarker = L.marker([marker.lat, marker.lng], { icon: createMarkerIcon(category.color) })
                         .bindPopup(popupText)

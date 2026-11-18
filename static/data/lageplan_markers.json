@@ -220,34 +220,59 @@
             "description": "Turm C, Wilhelm-Röpke-Straße 6"
         },
         {
-            "name": "St.-Michaels-Kapelle mit mittelalterlichem Friedhof",
+            "name": "Elisabethkirche",
             "category": "sehenswuerdigkeiten",
-            "lat": 50.814972,
-            "lng": 8.768472
+            "lat": 50.8148549,
+            "lng": 8.7700000,
+            "popup": "Die Elisabethkirche, deren Grundstein im Jahr 1235 gelegt wurde, ist die älteste rein gotische Kirche Deutschlands und wurde zu Ehren der heiliggesprochenen Elisabeth von Thüringen über ihrem Grabmal errichtet. Im Mittelalter entwickelte sich die Elisabethkirche zu einem der bedeutsamsten Pilgerorte Europas. Die Kirche beherbergt wertvolle Kunstschätze, wie den Elisabethschrein und bunte mittelalterliche Glasfenster aus dem 13. Jahrhundert.",
+            "description": "Die Elisabethkirche, deren Grundstein im Jahr 1235 gelegt wurde, ist die älteste rein gotische Kirche Deutschlands und wurde zu Ehren der heiliggesprochenen Elisabeth von Thüringen über ihrem Grabmal errichtet. Im Mittelalter entwickelte sich die Elisabethkirche zu einem der bedeutsamsten Pilgerorte Europas. Die Kirche beherbergt wertvolle Kunstschätze, wie den Elisabethschrein und bunte mittelalterliche Glasfenster aus dem 13. Jahrhundert. Auch der die Kirche umgebende Firmaneiplatz mit zahlreichen historischen Gebäuden und barocken Sandsteinskulpturen ist sehenswert."
         },
         {
-            "name": "Alte Universität",
+            "name": "Landgrafenschloss",
             "category": "sehenswuerdigkeiten",
-            "lat": 50.80793,
-            "lng": 8.77179
+            "lat": 50.8100235,
+            "lng": 8.7673235,
+            "popup": "Das Landgrafenschloss entstand im 13. Jahrhundert, als die bereits seit dem 11. Jahrhundert existierende “Marburg” ausgebaut wurde. Es diente als Residenz der Landgrafschaft Hessen, bis Landgraf Philipp der Großmütige – Gründer der Marburger Universität – die Hauptresidenz nach Kassel verlegte.",
+            "description": "Das Landgrafenschloss entstand im 13. Jahrhundert, als die bereits seit dem 11. Jahrhundert existierende “Marburg” ausgebaut wurde. Es diente als Residenz der Landgrafschaft Hessen, bis Landgraf Philipp der Großmütige – Gründer der Marburger Universität – die Hauptresidenz nach Kassel verlegte. Im Jahre 1527 diskutierten hier die führenden Reformatoren wie Martin Luther, Philipp Melanchthon und Ulrich Zwingli über strittige Punkte ihrer Glaubenslehre im Rahmen des Marburger Religionsgesprächs.<br>Im Laufe der folgenden Jahrhunderte diente das Schloss verschiedenen Zwecken: Es war Festung, Gefängnis und Staatsarchiv. Heute beherbergt es Teile des Universitätsmuseums für Kunst- und Kulturgeschichte und im Anbau ein Studentenwohnheim. Im Schlosspark werden auf der Schlossparkbühne heute Theaterstücke und Konzerte gespielt und im Sommer Filme gezeigt."
         },
         {
             "name": "Spiegelslustturm",
             "category": "sehenswuerdigkeiten",
             "lat": 50.81502,
-            "lng": 8.78906
-        },
-        {
-            "name": "Weidenhausen / Weidenhäuser Straße",
-            "category": "sehenswuerdigkeiten",
-            "lat": 50.807487,
-            "lng": 8.773884
+            "lng": 8.78906,
+            "popup": "Der Spiegelslust- oder Kaiser-Wilhelm-Turm ist eine 372 Meter über dem Meeresspiegel gelegener und 1890 fertiggestellter Turm mit Aussichtsplattform, die einen einmaligen Blick über das Lahntal bietet.<br>Der Turm, der von einem 2007 von der Künstlerin Helmi Ohlhage angebrachten Lichtkunstherz “Siebensiebenzwölfnullsieben” geziert wird, gilt als eines der Wahrzeichen Marburgs.",
+            "description": "Der Spiegelslust- oder Kaiser-Wilhelm-Turm ist eine 372 Meter über dem Meeresspiegel gelegener und 1890 fertiggestellter Turm mit Aussichtsplattform, die einen einmaligen Blick über das Lahntal bietet.<br>Der Turm, der von einem 2007 von der Künstlerin Helmi Ohlhage angebrachten Lichtkunstherz “Siebensiebenzwölfnullsieben” geziert wird, gilt als eines der Wahrzeichen Marburgs. Durch das Anrufen der namensgebenden Nummer wird das Herz für einige Minuten zum Leuchten gebracht. Für alle Marburger, die mindestens hundert Jahre alt werden, leuchtet das Herz in der Geburtstagsnacht. Das Herz leuchtet auch für eiserne Hochzeiten. Unter Marburger Student:innen wird seit Langem die urbane Legende tradiert, dass alle Student:innen, die den Turm vor Beendigung ihres Studiums besteigen, ihr Studium nicht beenden werden."
         },
         {
             "name": "Grüner Wehr / Hirsefeldsteg",
             "category": "sehenswuerdigkeiten",
             "lat": 50.803690,
-            "lng": 8.772480
+            "lng": 8.772480,
+            "description": "Das Grüne Wehr ist eine historische Wehranlage an der Lahn im Marburger Stadtteil Weidenhausen und eines der Wahrzeichen sowie ein beliebtes Fotomotiv der Stadt. An diesem Abschnitt der Lahn können auch Fischreiher und andere Vögel beobachtet werden. Vom Hirsefeldsteg aus, einer über die Lahn führenden Fußgängerbrücke, hat man einen besonders pittoresken Blick, da sich über dem Wehr die Oberstadt mitsamt Schloss erhebt."
+        },
+        {
+            "name": "Weidenhausen / Weidenhäuser Straße",
+            "category": "sehenswuerdigkeiten",
+            "lat": 50.807487,
+            "lng": 8.773884,
+            "popup": "In dieser mit mittelalterlichen Fachwerkhäusern gesäumten Pflasterstraße wohnten im Mittelalter und darüber hinaus hauptsächlich Händler und Handwerker, während die “höheren Stände” in der Oberstadt lebten. Im Jahre 1235 wurde der Stadtteil erstmals urkundlich erwähnt und kurioserweise war diese ländlich erscheinende Straße bis zur Fertigstellung der B3 1969 eine der Hauptzufahrtsstraßen nach Marburg.",
+            "description": "In dieser mit mittelalterlichen Fachwerkhäusern gesäumten Pflasterstraße wohnten im Mittelalter und darüber hinaus hauptsächlich Händler und Handwerker, während die “höheren Stände” in der Oberstadt lebten. Im Jahre 1235 wurde der Stadtteil erstmals urkundlich erwähnt und kurioserweise war diese ländlich erscheinende Straße bis zur Fertigstellung der B3 1969 eine der Hauptzufahrtsstraßen nach Marburg. Ein besonders bemerkenswertes Gebäude ist das frühere St.-Jakobs-Hospital, welches sich stilistisch und größentechnisch deutlich von den anderen Fachwerkhäusern abhebt. Es befindet sich - aus Richtung der Kernstadt kommend - gleich rechts am Beginn der Straße."
+        },
+        {
+            "name": "Wendelgasse mit Wendeltreppe",
+            "category": "sehenswuerdigkeiten",
+            "lat": 50.808838,
+            "lng": 8.768516,
+            "popup": "Kaum eine Gasse der mittelalterlichen Oberstadt ist so urig und unverwechselbar marburgerisch wie die Wendelgasse. Auf halbem Weg zwischen Landgrafenschloss und Lahn gelegen, beginnt die Gasse mit einer steinernen Wendeltreppe auf Höhe der ebenso sehenswerten lutherischen Pfarrkirche und führt in eine enge, von Fachwerkhäusern gesäumte Gasse hinab in die Barfüßerstraße",
+            "description": "Kaum eine Gasse der mittelalterlichen Oberstadt ist so urig und unverwechselbar marburgerisch wie die Wendelgasse. Auf halbem Weg zwischen Landgrafenschloss und Lahn gelegen, beginnt die Gasse mit einer steinernen Wendeltreppe auf Höhe der ebenso sehenswerten lutherischen Pfarrkirche und führt in eine enge, von Fachwerkhäusern gesäumte Gasse hinab in die Barfüßerstraße. Schon die – mitunter in der Wendelgasse 4 wohnhaften - Gebrüder Grimm beschritten diesen Weg hinauf zur Wohnung ihres Professors Friedrich Carl von Savigny in der Ritterstraße. Auch der russische Universalgelehrte Michail W. Lomonossow lebte in der Wendelgasse."
+        },
+        {
+            "name": "St.-Michaels-Kapelle mit Friedhofspark",
+            "category": "sehenswuerdigkeiten",
+            "lat": 50.814972,
+            "lng": 8.768472,
+            "popup": "Westlich der Elisabethstraße und gegenüber der Elisabethkirche befindet sich die St. Michaelskapelle, eine im Jahr 1270 erbaute gotische Pilger- und Friedhofskapelle. Obwohl die Kapelle heute nicht mehr zugänglich ist, lohnt sich die Besichtigung. Der die Kapelle umgebende Friedhofspark beherbergt zahlreiche Grabsteine aus dem 16. bis 19. Jahrhundert und den Kunstepochen Renaissance, Barock und Klassizismus.",
+            "description": "Westlich der Elisabethstraße und gegenüber der Elisabethkirche befindet sich die St. Michaelskapelle, eine im Jahr 1270 erbaute gotische Pilger- und Friedhofskapelle. Obwohl die Kapelle heute nicht mehr zugänglich ist, lohnt sich die Besichtigung. Der die Kapelle umgebende Friedhofspark beherbergt zahlreiche Grabsteine aus dem 16. bis 19. Jahrhundert und den Kunstepochen Renaissance, Barock und Klassizismus. Der älteste Grabstein stammt aus dem Jahr 1566. Du gelangst zur St. Michaelskapelle, indem du der kleinen Treppe folgst, die direkt gegenüber dem Haupteingang der Elisabethkirche hinter einigen Häusern beginnt. Eine angebliche Predigt Martin Luthers in der Kapelle oder eine Umbettung der Elisabeths von Thüringen auf den Friedhof lassen sich historisch nicht belegen."
         }
     ]
 }
