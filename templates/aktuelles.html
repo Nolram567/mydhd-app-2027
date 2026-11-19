@@ -33,6 +33,15 @@
                 const liste = document.getElementById('meldungen-liste');
                 liste.innerHTML = '';
 
+                // Keine Meldungen vorhanden -> Hinweistext anzeigen
+                if (!Array.isArray(meldungen) || meldungen.length === 0) {
+                    const leer = document.createElement('p');
+                    leer.className = 'aktuelles-leer';
+                    leer.textContent = 'Derzeit liegen keine Meldungen vor';
+                    liste.appendChild(leer);
+                    return;
+                }
+                
                 meldungen.forEach(meldung => {
                     const artikel = document.createElement('article');
                     artikel.className = 'aktuelles-meldung';
@@ -55,6 +64,7 @@
                 });
             })
             .catch(error => console.error('Fehler beim Laden der Meldungen:', error));
+            document.getElementById('meldungen-liste').innerHTML = '<p>Derzeit liegen keine Meldungen vor</p>';
     </script>
 {% endblock %}
 
