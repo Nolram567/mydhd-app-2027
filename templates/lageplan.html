@@ -110,7 +110,10 @@
                 maximizeButton.setAttribute('role', 'button');
                 L.DomEvent.disableClickPropagation(wrapper);
                 L.DomEvent.on(maximizeButton, 'click', event => {
-                    L.DomEvent.preventDefault(event);
+                    // stop() statt nur preventDefault(): setMapMaximized tauscht das Icon aus, das Klickziel
+                    // (SVG) hängt danach nicht mehr im DOM und Leaflet würde den Klick als Kartenklick
+                    // werten und das offene Popup schließen
+                    L.DomEvent.stop(event);
                     setMapMaximized(!mapContainer.classList.contains('maximized'));
                 });
                 return wrapper;
